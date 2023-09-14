@@ -1,0 +1,100 @@
+/****************************************************************************/
+/* STILE DEI MESSAGGI PRIVATI */
+
+/* HELP: Da qui è possibile modificare:
+- I font ed i colori dei messaggi privati
+- Le dimensioni e la posizione delle finestre dei messaggi privati
+- Lo sfondo dei messaggi privati */
+
+
+/****************************************************************************/
+
+div.pagina_messages_center{
+padding-top:6px;}
+
+div.pagina_messages_center div.link_bottoni a{
+font-family:'Average';
+font-variant:small-caps;
+color: #171310;
+padding: 6px;
+border:inset 3px #ba9673;
+background-color: #CDBA96;
+}
+
+/*Testo delle colonne*/
+div.pagina_messages_center div.elementi_elenco{ 
+   height: 40px;
+   background:transparent;
+}
+
+div.pagina_messages_center tr.titoli:nth-child(odd){ 
+   background:transparent;
+}
+
+div.pagina_messages_center tr:nth-child(odd){ 
+border-color: #ba9673;
+background-color: #CDBA96;
+}
+
+div.pagina_messages_center tr{ 
+border-color: #ba9673;
+background-color: #836a51;
+}
+
+div.pagina_messages_center td.check{ 
+padding-right:7px;
+	border-width:4px;
+	border-style:inset;
+	border-color:#ba9673;
+}
+
+div.pagina_messages_center td.icone{ 
+padding-left:7px;
+	border-width:4px;
+	border-style:inset;
+	border-color:#ba9673;
+}
+/*************************/
+/*Visualizzazione del messaggio singolo*/
+div.read_message_box{
+   width: 80%;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+div.read_message_box div.infos{ 
+   clear: both;
+   text-align: left;
+}
+
+div.read_message_box div.infos span.title{ 
+  font-style: italic;
+}
+div.read_message_box div.infos span.body{ 
+  font-weight: bold; 
+}
+
+div.read_message_box_text{
+  clear: both;
+border-width: 6px;
+border-style: inset;
+border-color: #ba9673;
+background-color: #CDBA96;
+color: #171310;
+font-variant:none;
+padding:10px;
+} 
+div.read_message_box_forms{
+  clear: both;
+  margin-bottom: 40px;
+}
+
+div.read_message_box_form{
+  float: right;
+  
+}
+
+div.read_message_box_form input {
+  height: 15px; 
+  width: 15px;
+} 

@@ -1,0 +1,521 @@
+/****************************************************************************/
+/* STILE DELLA SCHEDA DEL PERSONAGGIO */
+
+/* HELP: Da qui è possibile modificare:
+- I font ed i colori della scheda del personaggio
+- Le dimensioni, l'aspetto e la posizione degli elementi della scheda
+- Lo sfondo della scheda */
+
+div.page_title{
+    height:none;
+}
+
+div.pagina_scheda{
+    margin-left: auto;
+    margin-right: auto;
+    width: 520px;
+    background:url("imgs/sfondoscheda.jpg");
+    background-repeat:repeat-y;
+}
+
+div.pagina_scheda div.pagebody{
+}
+
+div.pagina_scheda a{
+    /*font-weight: normal;*/
+}
+
+div.pagina_scheda div.form_info{
+    font-style: italic;
+    font-size: 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+/*Titoli dei box*/
+div.pagina_scheda div.titolo_box{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0px;
+    margin-bottom: 5px;
+}
+
+/*Box nome,ritratto,iscritto da, ultimo ingresso, scrivi a*/
+div.ritratto{
+    margin: -30px 0px 39px 30px;
+    float: left;
+    font-size: 12px;
+    width: 200px;
+    height: 350px;
+    text-align: center;
+    padding: 0px 0px 0px 5px;
+}
+
+div.iscritto_da{
+    font-size: 11.5px;
+    text-align: center;
+    border-width: 1px 1px 0px 1px;
+    border-style:solid;
+    border-color: #CDBA96;
+    background-color: #000;
+    margin: 4px 0px 0px 4px;
+}
+
+div.ultimo_ingresso{
+    margin: 0px 0px 5px 4px;
+    font-size: 11.5px;
+    text-align: center;
+    font-weight: bolder;
+    color: #CDBA96;
+    border-width: 0px 1px 1px 1px;
+    border-style:solid;
+    border-color: #CDBA96;
+    background-color: #29301f;
+
+}
+
+/*Nome PG*/
+div.ritratto div.ritratto_nome{
+    margin: -6px 0px 5px 4px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #CDBA96;
+    padding: 3px;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: #CDBA96;
+    background-color: #29301f;
+    font-family:'Cinzel';
+}
+
+/*Immagine*/
+div.ritratto div.ritratto_avatar{
+    width: 200px;
+    height:307px;
+    margin: 2px 2px 0px 2px;
+    overflow: hidden;
+}
+
+div.ritratto_avatar img{
+    max-width: 200px;
+    max-height:300px;
+    border:inset;
+}
+
+/*Link invia messaggio*/
+div.ritratto div.ritratto_invia_messaggio{
+    margin: 5px 0 0 0;
+
+}
+
+/*Box punteggi, razza, gilda, ruolo off*/
+div.profilo{
+    margin: -30px 30px 0px 0px;
+    float: right;
+    font-size: 12px;
+    width: 250px;
+
+}
+
+div.profilo div.titolo_box{
+    border-width: 1px 0px 0px 0px;
+    border-style: solid;
+    border-color: #CDBA96;
+    margin-bottom: -0.5px;
+    width:240px;
+    margin-left: 2px;
+    margin-bottom: 1px;
+}
+div.profilo div.voce{
+    text-align: justify;
+    clear: both;
+    height: 25px;
+    color: #CDBA96;
+    border-width: 1px 0px 0px 0px;
+    border-style: solid;
+    border-color: #CDBA96;
+}
+
+/*Nome campo*/
+div.profilo_voce div.profilo_voce_label{
+    width: 115px;
+    height: 20px;
+    text-align: left;
+    font-size: 12px;
+    float: left;
+    margin-left: 2px;
+    padding-left: 2px;
+    color: #CDBA96;
+    font-variant: small-caps;
+    border-width: 0px 1px 0px 1px;
+    border-style: solid;
+    border-color: #CDBA96;
+    background-color: #29301f;
+}
+
+/*Valore campo*/
+div.profilo_voce div.profilo_voce_valore{
+    text-align: right;
+    color: #CDBA96;
+    height:20px;
+    font-size: 12px;
+    width: 116px;
+    float: right;
+    margin-right: 6px;
+    padding-right: 5px;
+    font-weight: bold;
+    border-width: 0px 1px 0px 0px;
+    border-style: solid;
+    border-color: #CDBA96;
+    background-color: black;
+}
+
+/*Icone gilda*/
+img.profilo_img_gilda{
+    height: 20px;
+    width: 20px;
+}
+
+/*Box status*/
+div.profilo_status{
+    margin: 2px 6px 2px 2px;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: #CDBA96;
+    clear: both;
+    height: 100px;
+    text-align: center;
+
+}
+
+div.profilo_status_label
+{
+    margin-top:1px;
+    border-width: 0px 0px 1px 0px;
+    height:22px;
+    border-style: solid;
+    border-color: #CDBA96;
+    color:#CDBA96;
+    background: #000;
+    font-variant:small-caps;
+    font-family:'Cinzel';
+    font-size:16px;
+}
+
+div.profilo_status_valore {
+    margin: 2px 2px 2px 2px;
+    clear: both;
+    font-size: 13px;
+    height: 67px;
+    padding: 3px;
+    text-align: justify;
+    color: #CDBA96;
+    background: black;
+    max-height: 150px;
+    overflow: auto;
+}
+
+/*Casella PF nei controlli master*/
+div.form_field input.healt_input{
+    width: 28px;
+}
+
+/*Box storia pg, box affetti*/
+div.background{
+    margin: 25px 30px 20px 37px;
+    clear: both;
+    overflow: hidden;
+    width: 448px;
+    border-width: 0px 0px 0px 0px;
+    padding-bottom: 12px;
+    border-color: #CDBA96;
+    border-style: solid;
+
+}
+
+div.background div.titolo_box{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 6px;
+    border: inset 3px #ba9673;
+    background-color: #CDBA96;
+    color:#171310;
+    width:350px;
+    margin:auto;
+}
+
+div.body_box{
+    color: #CDBA96;
+    border-width: 0px 0px 0px 0px;
+    border-color: #CDBA96;
+    border-style: dotted;
+}
+
+div.background img{
+    max-width: 440px;
+
+}
+
+/*Menu' interno scheda*/
+div.menu_scheda{
+    margin: 0px 0px 0px 0px;
+    float: center;
+    text-align: center;
+    padding-top: 40px;
+    font-size: 12px;
+    width: 520px;
+    height: 91px;
+    background:url("imgs/sfondomenu.png");
+    background-repeat:no-repeat;
+}
+
+
+/*Box abilità*/
+div.elenco_abilita{
+    margin: 0px 0px 0px 165px;
+    clear: both;
+    float: center;
+    width: 0px;
+    height: 0px;
+    background-color: #330000;
+}
+
+div.elenco_abilita table{
+    margin: 0px auto 0px auto;
+}
+
+div.div_colonne_abilita_scheda, div.elenco_abilita_scheda table{
+    width: 0px;
+    height: 0px;
+}
+
+div.elenco_abilita td{
+    vertical-align: top;
+}
+div.abilita_scheda_nome{
+    width: 110px;
+    font-size: 10px;
+
+}
+div.abilita_scheda_car{
+    width: 78px;
+    font-size: 10px;
+    color: #CDBA98;
+
+}
+div.abilita_scheda_tank{
+    width: 20px;
+    font-size: 10px;
+
+}
+div.abilita_scheda_sub{
+    width: 35px;
+    font-size: 12px;
+
+}
+
+/****************************************************************************/
+
+/****************************************************************************/
+/* STILE DELLA PAGINA DI MODIFICA SCHEDA */
+
+div.modifica_scheda{
+    margin: 10px;
+}
+
+/****************************************************************************/
+
+/****************************************************************************/
+/* STILE DELLA PAGINA DI EQUIPAGGIAMENTO */
+
+div.omino_bianco_box{
+    margin-left: auto;
+    margin-right: auto;
+    width: 450px;
+    height: 300px;
+    text-align: center;
+    background-color: black;
+    border-style: ridge;
+    border-width: 1px 1px 1px 1px;
+    border-color: #CDBA96;
+}
+
+img.omino_bianco_img{
+    margin-top: 40px;
+    width: 300px;
+    height: 226px;
+
+}
+
+div.omino_bianco_armdx{
+    width: 49px;
+    height: 36px;
+    border: 1px dotted #CDBA96;
+    margin-top: 5px;
+    background-color: #330000;
+}
+div.omino_bianco_armdx img{
+    width: 48px;
+    height: 35px;
+}
+
+
+div.omino_bianco_armsx{
+    width: 49px;
+    height: 36px;
+    border: 1px dotted #CDBA96;
+    margin-top: 5px;
+    margin-right: 0px;
+    background-color: #330000;
+}
+div.omino_bianco_armsx img{
+    width: 48px;
+    height: 35px;
+}
+
+div.omino_bianco_chest{
+    width: 70px;
+    height: 50px;
+    border: 1px dotted #CDBA96;
+    margin-top: 5px;
+    margin-right: 0px;
+    background-color: #330000;
+}
+div.omino_bianco_chest img{
+    width: 69px;
+    height: 49px;
+}
+
+div.omino_bianco_legs{
+    width: 70px;
+    height: 50px;
+    border: 1px dotted #CDBA96;
+    margin-top: 5px;
+    background-color: #330000;
+}
+div.omino_bianco_legs img{
+    width: 69px;
+    height: 49px;
+    margin-right: 0px;
+    background-color: #330000;
+}
+
+div.omino_bianco_feet{
+    width: 63px;
+    height: 46px;
+    border: 1px dotted #CDBA96;
+    margin-top: 5px;
+    background-color: #330000;
+}
+
+div.omino_bianco_feet img{
+    width: 62px;
+    height: 45px;
+}
+
+div.omino_bianco_head{
+    width: 63px;
+    height: 46px;
+    border: 1px dotted #CDBA96;
+    margin-top: 5px;
+    background-color: #330000;
+}
+
+div.omino_bianco_head img{
+    width: 62px;
+    height: 45px;
+}
+
+div.omino_bianco_neck{
+    width: 49px;
+    height: 36px;
+    border: 1px dotted #CDBA96;
+    margin-top: 5px;
+    background-color: #330000;
+}
+
+div.omino_bianco_neck img{
+    width: 48px;
+    height: 35px;
+}
+
+div.omino_bianco_ring{
+    width: 30px;
+    height: 20px;
+    border: 1px dotted #CDBA96;
+    margin-top: 5px;
+    background-color: #330000;
+}
+
+div.omino_bianco_ring img{
+    width: 29px;
+    height: 19px;
+}
+
+/*Inventario*/
+div.pagina_scheda_equip {
+}
+div.pagina_scheda_oggetti {
+}
+div.pagina_scheda_oggetti td.casella_elemento,
+div.pagina_scheda_equip td.casella_elemento{
+    font-size: 13px;
+    font-width: bold;
+    color: #CDBA96;
+    padding: 3px;
+    background: #330000;
+
+}
+div.pagina_scheda_oggetti div.inventario_img img,
+div.pagina_scheda_equip div.inventario_img img{
+    margin-left:2px;
+    height: 95px;
+    width: 120px;
+    padding-top:5px;
+}
+div.pagina_scheda_oggetti div.inventario_img,
+div.pagina_scheda_equip div.inventario_img{
+    width: 122px;
+}
+div.pagina_oggetti_equip div.inventario_nome,
+div.pagina_scheda_equip div.inventario_nome{
+    width: 122px;
+    padding-bottom: 5px;
+}
+div.pagina_scheda_oggetti div.inventario_quantita{
+    width: 122px;
+    height: 5px;
+    font-size: 11px;
+}
+div.pagina_scheda_equip div.inventario_quantita{
+    width: 122px;
+    height: 5px;
+    font-size: 11px;
+}
+div.pagina_scheda_oggetti div.inventario_nome,
+div.pagina_scheda_equip div.inventario_nome{
+    font-size: 12px;
+    text-transform: uppercase;
+}
+div.pagina_scheda_oggetti div.form_label,
+div.pagina_scheda_equip div.form_label{
+    font-size: 12px;
+    margin: 0;
+}
+div.pagina_scheda_oggetti input,
+div.pagina_scheda_equip input{
+    font-size: 12px;
+    margin: 0;
+}
+div.inventario_riga_proprieta{
+    width: 120px;
+}
+div.pagina_scheda_equip form,
+div.pagina_scheda_oggetti form{
+    text-align: center;
+    margin: 0 0 4px 0;
+}
+
+/****************************************************************************/

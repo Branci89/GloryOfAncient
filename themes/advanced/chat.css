@@ -1,0 +1,197 @@
+/****************************************************************************/
+/* STILE DELLA CHAT E DEI PANNELLI */
+
+/* HELP: Da qui è possibile modificare:
+- I font ed i colori della chat
+- Le dimensioni e la posizione della chat
+- Lo sfondo della chat*/
+
+
+
+iframe.iframe_chat{
+   border: none;
+   width: 1px;
+   height: 1px;
+   margin: 0px;
+}
+div.chat_window{
+  text-align: center;
+}
+
+/**	* Fix per layout elastico
+	* @author Blancks
+*/
+div.chat_box{
+	position:absolute;
+	top:5px;
+	bottom:120px;
+	left:10px;
+	right:10px;
+	padding-right:10px;
+	overflow: auto;
+	font-size: 16px;
+	text-align:left;
+    border: solid 2px #1c1914;
+padding: 10px;
+}
+
+div.pagina_frame_chat div.page_body div.panels_box{
+	position:absolute;
+	bottom:45px;
+	left:5px;
+	right:5px;
+}
+
+div.form_chat{
+    color: #738855;
+    font-variant:small-caps;
+    display: flex;
+    justify-content: space-evenly;
+}
+/**	* Fine fix */
+
+
+
+/** * Avatar di chat
+	* @author Blancks
+*/
+img.chat_avatar{
+	margin:8px;
+    display: block;
+    float: left;
+    position: relative;
+}
+
+
+
+/***** testo della chat *****/
+
+
+/* Tipi messaggio: (A azione, P parlato, N PNG, M Master, I Immagine, S sussurro, D dado, C skill check, O uso oggetto) */
+
+div.chat_row_A{margin-top: 2px; font-weight:bolder;}
+div.chat_row_A	span.chat_time{margin-top: 2px; ; font-weight:bolder; color: orange; font-size: 11px;}
+div.chat_row_A	span.chat_name{margin-top: 2px; ; font-weight:bolder; color: orange; font-size: 14px;}
+div.chat_row_A	span.chat_msg{margin-top: 2px; ;  color: #a6711f; font-size: 14px;}
+div.chat_row_A	span.chat_tag{margin-top: 2px; ; font-weight:bolder; color: orange; font-size: 11.5px;}  
+div.chat_row_A  span.color2{margin-top: 2px; font-style:italic; color: #a6711f; font-size: 14px;}
+div.chat_row_A  span.color3{margin-top: 2px; font-style:italic; color: gold; font-size: 14px;}
+
+div.chat_row_P{margin-top: 6px; text-align:justify;}
+div.chat_row_P	span.chat_time{margin-top: 3px; ; margin-right:2px; color: #738855; font-size: 11px;}
+div.chat_row_P	span.chat_name a{margin-top: 3px; ; font-weight:bolder; color: #a6711f; font-size: 14px;
+font-family: 'Cinzel';}
+div.chat_row_P	span.chat_msg{margin-top: 3px; ; font-style: normal; font-weight: normal; color: #CDBA96; font-size: 14.5px;}
+div.chat_row_P	span.chat_tag a {margin-top: 3px; ; font-weight:0; color: #738855; font-size:15px; font-variant:small-caps;}
+div.chat_row_P span.color2{margin-top: 3px; ; font-weight: normal; font-style:italic; color: #738855; font-size: 14.5px;}
+div.chat_row_P span.color3{margin-top: 3px; ; font-weight: normal; font-style:italic; color: gold; font-size: 14px;}
+
+div.chat_row_M{  border-style: inset; padding:5px; width:85%; margin:auto;
+border-color: #ba9673;
+background-color: #CDBA96;
+margin-top: 5px;
+   border-width: 3px;
+   text-align: center;
+   padding: 2px 2px 2px 2px;
+   font-size:14px;
+   font-variant: small-caps;
+   color:  #171310
+}
+div.chat_row_M span.color3{  
+   font-variant: none;
+   color: darkred;
+}
+
+div.chat_row_N{margin-top: 4px;}
+div.chat_row_N	span.chat_time{margin-top: 4px; ; font-weight:bolder; color: #E8CC79; margin-right: 3px; font-size: 11px;}
+div.chat_row_N	span.chat_name{margin-top: 4px; ; font-weight:bolder; color: #E8CC79; font-size: 14px;}
+div.chat_row_N	span.chat_msg{margin-top: 4px; ; font-style:bolder; font-weight:0; color: white; font-size: 14.5px;} 
+div.chat_row_N span.color2{margin-top: 3px; ; font-style:italic; font-weight:bold; color: #CDBA96; font-size: 14.5px;}
+div.chat_row_N span.color3{margin-top: 3px; ; font-style:italic; font-weight:bold; color: gold; font-size: 14px;}
+
+div.chat_row_I{
+	margin-top: 3px;
+   text-align: center;
+}
+
+div.chat_row_S{
+margin-top: 3px; 
+margin-bottom: 2px; 
+font-size: 13.5px; 
+border:outset 2px #738855;
+background:#738855;
+padding:3px;
+}
+
+div.chat_row_S	span.chat_time{margin-top: 3px; ; font-weight:0; color: #CC9933;}
+div.chat_row_S	span.chat_name{margin-top: 3px; margin-left: 5px; font-weight:none; color: white;}
+div.chat_row_S	span.chat_msg{margin-top: 3px; ; font-weight: bolder; color: black;}
+div.chat_row_S	span.chat_tag{margin-top: 3px; ; font-weight:0; color: white;}  
+
+div.chat_row_D{
+  margin-top: 3px;
+  border-width: 1px;
+  border-color: #CDBA96;
+  border-style: solid;
+  color: #CDBA96;
+  background: transparent;
+}
+div.chat_row_D	span.chat_time{margin-top: 3px; ; font-weight:bolder; color: #CDBA96; font-size: 13px; margin-right: 3px;}
+div.chat_row_D	span.chat_msg{margin-top: 3px; font-weight:bolder; color: white; font-size: 13px;}
+
+
+div.chat_row_O{margin-top: 3px; border-width: 2px; border-color: #CDBA96; border-style: solid; background-color: black;}
+div.chat_row_O	span.chat_time{margin-top: 3px; ; font-weight:bolder; color: #CDBA96; font-size: 13px; margin-right: 3px;}
+div.chat_row_O	span.chat_msg{margin-top: 3px; font-weight:bolder; color: #CDBA99; font-size: 13px;}
+
+div.chat_row_C{
+margin-top: 2px;
+
+ border-width: 0px;
+   border-color: darkred;
+   border-style: solid;
+      color: darkred;
+}
+div.chat_row_C	span.chat_time{margin-top: 2px; font-weight:bolder; color: grey; font-size: 13px; margin-right: 3px;}
+div.chat_row_C	span.chat_msg{margin-top: 2px; font-weight:bolder; color: grey; font-size: 13px;}
+
+
+
+span.colorMaster{ margin-top: 2px; font-style:italic; color: chocolate; font-size: 14px; }
+
+
+
+/***** form inserimento *****/
+
+div.form_row {
+  clear: both;
+  height: 20px; 
+}
+div.casella_chat {
+  float: left; 
+  margin-bottom: 6px;
+  margin-left: 5px;}
+
+/*Casella Tag*/
+input#tag{
+   width: 90px;
+}
+/*Casella Messaggio*/
+input#message{
+   width: 280px;
+}
+
+div.casella_chat select#id_ab{
+width: 0px;
+height: 0px;
+border: none;
+margin: 0px 0px 0px 0px;
+}
+
+div.casella_chat select#id_stats{
+width: 0px;
+height: 0px;
+border: none;
+margin: 0px 0px 0px 0px;
+}
+/****************************************************************************/

@@ -1,0 +1,289 @@
+/** * Skin Advanced
+	* Il presente files regola gli stili CSS della homepage
+	* @author Blancks
+*/
+
+
+/** * STILI DEI CONTENUTI DEL SITO */
+
+/** * Titolo del sito
+*/
+h1{
+	margin:0;
+	padding:30px 0 0 76px;
+	font-size:30px;
+	font-family:Myriad Pro,Myriad Web Pro Regular,Lucida Grande,Geneva,Trebuchet MS,sans-serif;
+}
+
+/** * Stile del link sul titolo */
+h1 a, h1 a:visited, h1 a:hover{
+	color:#222;
+	text-decoration:none;
+}
+
+
+/** * Sottotitolo
+*/
+div.subtitle{
+	margin-left:78px;
+	color:#666;
+	font-family:Verdana,Sans; 
+	font-size:12px; 
+}
+
+/** * Stili del form di login
+*/
+div.login_form{
+float: right;
+width: 580px;
+height: 420px;
+background: url(imgs/home2/sfondotesti.png) no-repeat;
+margin-top: 34px;
+padding-top: 105px;  
+}
+
+/** * stile che ingloba i gruppi label/input
+*/
+div.login_form div{
+	margin-bottom:4px;
+}
+
+/** * Stile per le label dei form
+*/
+span.form_label{
+	font-size: 13px;
+font-variant: small-caps;
+font-family: 'Cinzel';
+color: black;
+}
+
+div.login_form input{
+	width:145px;
+	margin-right: 214px;
+}
+
+/** * Stile per il bottone del login
+*/
+div.login_form input[type='submit']{
+        background-color: #CDBA93;
+	display:block;
+	float:right;
+	width:65px;
+	height:20px;
+	color:black;
+}
+
+
+
+/** * Contenuti principali della pagina
+*/
+
+/** * Titolo della sezione */
+h2{
+	font-size:25px;
+	font-weight:bold;
+	margin:0;
+	padding-bottom:4px;
+	border-bottom:solid 0px #d9d9d9;
+}
+
+/** * Contenuti testuali */
+div.content_body p{
+	font-size:13px;
+	padding:0 10px;
+	font-color:black;
+}
+
+
+div.content_body a{
+	color:#999;
+	text-decoration:underline;
+}
+
+
+
+/** * Menù di navigazione
+*/
+div.sidecontent ul{
+	margin:20px 10px 0 10px;
+	padding:20px 10px 20px 23px;
+	
+	background-color:#ppppp;
+	
+	list-style-type:none;
+	
+	-moz-border-radius:0px;		/* Bordi arrotondati */
+	-webkit-border-radius:0px;
+	-khtml-border-radius: 0px;
+	border-radius:0px;
+}
+
+/** * Contenitore delle voci nel menù 
+*/
+div.sidecontent ul li{
+	margin-bottom:5px;
+	text-align:center;
+}
+
+/** * Link voce menù 
+*/
+div.sidecontent ul li a, div.sidecontent ul li a:visited{
+	color:#f1f1f1;
+	width: 150px;
+	text-decoration:none;
+	display:block;
+	font-size:13px;
+	padding:2px;
+	background-color:none;
+}
+
+/** * Link voce menù al passaggio del mouse
+*/
+/** *div.sidecontent ul li a:hover{
+	background-color:#b2b2b2;
+	color:#444;
+}
+
+
+/** Stile generico contenitore per altri contenuti nella sidebar 
+*/
+div.side_modules{
+	margin:0 0 0 0;
+	background-color:#pppp;
+	font-color:#333;
+	padding:13px 0 0 14px;
+	text-align:center;
+	
+	-moz-border-radius:0px;		/* Bordi arrotondati */
+	-webkit-border-radius:0px;
+	-khtml-border-radius: 0px;
+	border-radius:0px;
+}
+
+div.side_modules .form_label{
+font-size: 13px;
+font-variant: small-caps;
+font-family: 'Cinzel';
+color: black;}
+
+
+/** * Tabella statistiche */
+table.statistics{
+	text-align:right;
+	margin-top:10px;
+	font-size:10px;
+}
+
+table.statistics td{padding-right:5px;}
+
+/** * Stile di colorazione per definire le righe pari */
+table.statistics tr.pair{
+	background-color:#ppppp;
+}
+
+/** * Stile per definire il titolo del parametro statistico */
+table.statistics td.label{
+	font-weight:bolder;
+	text-align:left;
+	padding:2px;
+}
+
+
+
+/** * Recupero password */
+div.pass_rec{
+	margin-top:10px;
+}
+
+input#passrecovery{
+	width:145px;
+}
+
+div.pass_rec input[type='submit']{
+display: block;
+float: left;
+width: 106px;
+height: 20px;
+color: black;
+margin-left: 101px;
+}
+
+
+
+/** * Footer info */
+div#footer div{
+	background-color:none;
+	padding:10px 0 3px 0;
+	position: relative;
+}
+
+div#footer p{
+	font-size:11px;
+	color:black;
+	margin-top: -10px;
+	padding:0 15px 2px 15px;
+	text-align:center; 
+	position:relative;
+}
+
+
+
+
+/** * LAYOUT SITO */
+
+/** * Struttura contenitore di tutto il sito 
+*/
+div#main{
+	height:100px;
+	width: 1050px;
+	text-align:right;
+	margin: auto;
+}
+
+
+/** * Larghezza della struttura del sito
+*/
+div#site_width{
+	text-align: right;
+}
+
+/** * Header
+*/
+div#header{
+}
+
+
+/** * Corpo contenuti della pagina
+*/
+div#content{
+}
+
+/** * Struttura colonna di lato
+*/
+div.sidecontent{
+	float:left;
+    margin-top: -86px;
+}
+
+/** * Struttura corpo contenuti pagina 
+*/
+div.content_body{
+	width:620px;
+	padding:10px;
+	float:left;
+	background:url("imgs/sfondobodycontenthome.png")repeat left center;
+	
+}
+
+
+/** * pie di pagina
+*/
+div#footer{
+padding: 0px 0px 0px 0px;
+width: 500px;
+position: relative;
+margin-top: 100px;
+}
+
+
+/** *** Fine stili regolatori del layout *** */

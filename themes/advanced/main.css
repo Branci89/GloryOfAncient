@@ -1,0 +1,693 @@
+/** * Skin advanced
+	* @author Blancks
+*/
+
+/** * Parametri di default nella pagina
+*/
+body{padding:0; margin:0; color:#CDBA96; font-family:'Average'; font-size:13px; background-color:black; }
+
+body.transparent_body{background-color:transparent; }
+
+div, ul, li{margin:0; padding-top:0px;}
+
+.blank{clear:both;}
+
+a, a:visited{
+	color:#CDBA96;
+	text-decoration:none;
+}
+
+img{
+  border:none;
+}
+
+iframe.iframe_messaggi{
+height:80px;
+}
+
+a:hover{
+	color:#orange;
+	font-weight:bolder;
+	text-decoration:underline;
+}
+a.none:hover {
+        color:#orange;
+	font-weight:bolder;
+	text-decoration:none;
+}
+div.form_field table{
+	margin:5px auto;
+}
+
+input{
+	width:95%;
+	margin-bottom:5px;
+	background: #CDBA96;
+	border-color: #333;
+}
+
+input[type=image]{
+	width:95%;
+	margin-bottom:5px;
+	background-color: black;
+}
+
+input#message{
+	width:95%;
+	margin-bottom:5px;
+	background-color: #CDBA96;
+	border-color: #333;
+}
+
+input#tag{
+	width:95%;
+	margin-bottom:5px;
+	background-color: #CDBA96;
+	border-color: #333;
+}
+
+input.form_input{
+	width:95%;
+	margin-bottom:5px;
+	background-color: grey;
+	border-color: #333;
+}
+
+ textarea{
+	width:95%;
+	margin-bottom:5px;
+	background-color: #CDBA96;
+	border-color: #333;
+}
+
+select{
+	width:95%;
+	margin-bottom:5px;
+	background-color: #CDBA96;
+	border-color: #333;
+}
+
+select.id_item{
+	height:23px;
+}
+
+input[type='submit']{
+	width:auto;
+	margin:1px 0 15px 0;
+    padding-bottom: 3px;
+font-variant: small-caps;
+}
+
+textarea{
+	height:100px;
+}
+
+div.form_label{
+	font-size: 13px;
+margin-top: 5px;
+font-variant: small-caps;
+}
+
+div.form_info{
+	font-size:12px;
+	margin-bottom:15px;
+}
+
+select.day, select.month, select.year{
+	width:60px;
+	display:inline-block;
+}
+
+/** * Stile dei messaggi d'avviso dell'engine */ 
+div.warning, div.error{
+	font-size: 16px;
+text-align: center;
+margin: 0 px;
+padding: 0 px;
+color:red;
+font-family: 'Cinzel';
+font-style: bold;
+background-color: black;
+}
+
+div.link_back{
+	text-align:center;
+	padding:3px;
+	margin-top: 5px;
+}
+
+
+
+/** * Logout */
+div.logout_box{
+	margin:20px auto;
+	padding:10px;
+	text-align:center;
+	color:#CDBA96;
+	background-color:black;
+	border:solid 1px #CDBA96;
+	background:url("imgs/main_baselogout.png") no-repeat top center black;
+	-moz-border-radius:0px;		/* Bordi arrotondati */
+	-webkit-border-radius:0px;
+	-khtml-border-radius: 0px;
+	border-radius:0px;
+}
+
+div.logout_box a{
+	text-decoration:underline;
+	font-style:italic;
+	color:orange;
+}
+
+
+/** * Titoli delle sezioni
+*/
+div.innertube h2, div.output h2, div.page_title h2{
+	font-size:10px;
+	font-weight:bolder;
+        margin-bottom: 5px;
+        padding-bottom: 0px;
+        text-align:center;
+}
+
+
+/** * Stile dei contenitori grigi con i bordini arrotondati
+*/
+div.info{
+        width:210px;
+        height:190px;
+ }
+ 
+ div.info_image_luogo{
+ width:100%;
+ margin:auto;
+ }
+
+img.immagine_luogo{
+margin-left: -10px;
+max-width: 100%;
+margin-bottom: 5px;
+}
+
+div.pagina_info_location{
+	padding: 1px 0 10px 0px;
+	width: 208px;
+	border:solid 0px #444;
+	-moz-border-radius:0px;		/* Bordi arrotondati */
+	-webkit-border-radius:0px;
+	-khtml-border-radius: 0px;
+	border-radius:0px;
+}
+
+div.pagina_info_location div.page_title h2 {font-size: 0px;}
+
+div.msgs{
+	margin: 0px 0 0 -37px;
+	padding-top:20px;
+	width:210px;
+	height:60px;
+	
+	border:solid 0px #444;
+	background:url("imgs/sfondo_messaggio.png") repeat top center;
+	-moz-border-radius:0px;		/* Bordi arrotondati */
+	-webkit-border-radius:0px;
+	-khtml-border-radius: 0px;
+	border-radius:0px;
+}
+
+div.menu{
+	margin:0px 0px 0px -4px;
+	padding:0px;
+	width:200px;
+	border:solid 0px #444;
+	margin-top:-5px;
+	-moz-border-radius:0px;		/* Bordi arrotondati */
+	-webkit-border-radius:0px;
+	-khtml-border-radius: 0px;
+	border-radius:0px;
+}
+
+div.presenti{
+	margin: 19px 0px 0 5px;
+	padding:0px;
+	width:210px;
+    height: 520px;
+	border:solid 0px #444;
+	-moz-border-radius:0px;		/* Bordi arrotondati */
+	-webkit-border-radius:0px;
+	-khtml-border-radius: 0px;
+	border-radius:0px;
+
+}
+
+.pagina_presenti{
+      width:210px;
+      height:520px;
+  }
+
+div.output{
+	position:absolute;
+	top:3px;
+	bottom:0;
+	right:0px;
+	left:0px;
+	width:auto;
+	overflow:auto;
+	text-align:center;
+	background:url("imgs/sfondo.jpg") repeat top left;
+}
+
+div.output h2{
+font-size: 0px;
+height: 0px;
+width: 0px;
+}
+
+/** * Informazioni con anteprima luogo
+*/
+div.info_image{
+	text-align:center;
+    margin-right: 9px;
+margin-bottom: 8px;
+}
+
+div.box_stato_luogo{
+	padding-top:4px;
+	padding-bottom: 3px;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin-left: -6px;
+	margin-bottom:7px;
+        width: 148px;
+        border: 0px;
+        
+        background-color: black;
+        background:url("imgs/statoluogo.jpg") no-repeat top left;
+        border-style: solid;
+}
+
+div.box_stato_luogo{
+	padding-top: 2px;
+padding-bottom: 8px;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin-left: 22px;
+	margin-bottom:7px;
+        width: 148px;
+        border: 0px;
+       
+        background-color: transparent;
+        border-style: solid;
+}
+
+div.box_stato_luogo marquee.stato_luogo{
+        color: black;
+}
+
+div.meteo_date{
+font-size:0px;
+text-align:center;
+margin-top:7px;
+}
+
+div.meteo{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-align: center;
+    font-size: 12px;
+    color: black;
+    font-weight: bold;
+    background-color: black;
+    background: url("imgs/sfondo_meteo.png") no-repeat center;
+    margin-right: 13px;
+    margin-top: -9px;
+}
+div, ul, li {
+    margin: 0;
+        margin-top: 0px;
+        margin-right: 0px;
+    padding-top: 0px;
+}
+body {
+    color: #CDBA96;
+    font-family: 'Average';
+    font-size: 13px;
+}
+
+
+/** * Frame Messaggi 
+*/
+iframe.iframe_messaggi{
+    height: 60px;
+    width: 210px;
+    margin-left:-7px;
+}
+
+div.pagina_messaggi{
+	text-align:center;
+	font-size:16px;
+}
+
+div.pagina_messaggi a, div.pagina_messaggi a:visited{
+	text-decoration:none;
+	color:#444;
+}
+
+div.messaggio_forum_nuovo a, div.messaggio_forum_nuovo a:visited{
+	font-weight:bolder;
+	font-style:italic;
+	color:#111;
+}
+
+div.pagina_servizi_gilde table{
+        position: relative;
+        background-color: black;
+        margin-left: 0px;
+}
+
+/** * Men� di gioco
+*/
+select#gotomap{
+	display:block;
+	width:150px;
+	margin:0 auto 15px auto;
+}
+
+div.link_menu{
+	padding:0 0 0 0px;
+	font-size:14px;
+	color: #CDBA96;
+}
+
+div.link_menu a{
+	display:block;
+	padding:0px;
+	text-align:center;
+	color: #CDBA96;
+    font-family: 'Cinzel';
+font-size: 18px;
+}
+
+div.link_menu a:hover{
+	background-color:none;
+	text-decoration:none;
+	-moz-border-radius:0px;		/* Bordi arrotondati */
+	-webkit-border-radius:0px;
+	-khtml-border-radius: 0px;
+	border-radius:0px;
+}
+
+
+
+/** * Mappa cliccabile */
+
+/** * Posizionamento mappa cliccabile 
+*/
+div.mappaclick_map{
+	margin:20px auto;
+}
+
+
+/** * Link testuali sulla mappa */
+div.mappaclick_map a{
+	font-size:13px;
+	font-weight:bolder;
+	color: #CDBA96;
+}
+
+/** * stile della tooltip di descrizione sulla mappa 
+*/
+div#descriptionLoc{
+	position:absolute; 
+	width:220px;
+	margin-top: -40px;
+	background-color:black;
+	background:url("imgs/sfondobody.jpg") top left repeat;
+	padding:2px;
+	font-size:10px;
+	border:ridge 2px #CDBA96;
+	font-family:Verdana,Sans;
+	color:#CDBA96;
+	text-align:left;
+	
+	-moz-border-radius:0px;		/* Bordi arrotondati */
+	-webkit-border-radius:0px;
+	-khtml-border-radius: 0px;
+	border-radius:0px;
+	
+	display:none;/*NON TOCCARE* Di configurazione: nasconde la tip in partenza */
+	z-index:9999;/*NON TOCCARE* Di configurazione: mostra la tooltip sopra gli altri link */
+}
+
+/** * Stili relativi all'elenco delle mappe in basso
+*/
+div.mappaclick_more{
+	padding-top:10px;
+}
+
+div.mappaclick_more a{
+	background-color:#cfcfcf;
+	padding:8px;
+	margin-right:10px;
+	-moz-border-radius:5px;		/* Bordi arrotondati */
+	-webkit-border-radius:5px;
+	-khtml-border-radius: 5px;
+	border-radius:5px;
+}
+
+
+
+/** * Messages center
+*/
+
+div.elenco_record_gioco{
+	padding:10px;
+	
+}
+
+div.elenco_record_gioco table{
+	margin:auto;
+	width:90%;
+	border-width: 0;
+	border-style: 0;
+        border-color:#330000;
+	-moz-border-radius:0px;		/* Bordi arrotondati */
+	-webkit-border-radius:0px;
+	-khtml-border-radius: 0px;
+	border-radius:0px;
+}
+
+div.elementi_elenco{
+	padding-top:5px;
+	text-align:center;
+	color:#CDBA96;
+	-moz-border-radius:0px;		/* Bordi arrotondati */
+	-webkit-border-radius:0px;
+	-khtml-border-radius: 0px;
+	border-radius:0px;
+}
+
+div.titoli_elenco{
+font-weight: bolder;
+font-style: none;
+font-size: 19px;
+text-align: left;
+text-transform: uppercase;
+color: #414d31;
+margin: 5px 5px 5px 5px;
+background-color: transparent;
+font-family: 'Cinzel';
+text-shadow: black 1px 1px;
+}
+
+img.colonna_elengo_messaggi_icon{
+	width:30px;
+	height:30px;
+}
+
+div.controlli_elenco{
+	width:60px;
+}
+
+div.controllo_elenco{
+	float:left;
+}
+
+div.controllo_elenco input[type='image']{
+	width:15px;
+}
+
+
+/** * Ambientazione/Regolamento */
+div.user_ambientazione div.elementi_elenco, div.servizi_abilita div.elementi_elenco{
+	text-align:left;
+	padding:5px;
+	font-size: 10px;
+}
+
+div.user_ambientazione td.casella_titolo div.elementi_elenco div.servizi_abilita
+{
+	font-size:14px;
+	font-weight:bolder;
+	padding:0px 0px 0px 0px;
+	background: black;
+}
+
+td.casella_titolo {
+        font-size:14px;
+	font-weight:bolder;
+	padding:2px 0 2px 10px;
+}
+
+
+
+/** * Generico per elenchi, bacheche, regolamento, ambientazione etc */
+div.capitolo_elenco{
+font-weight: bolder;
+font-style: none;
+font-size: 19px;
+text-align: left;
+text-transform: uppercase;
+color: black;
+margin: 5px 5px 5px 5px;
+background-color: transparent;
+font-family: 'Cinzel';
+/**text-shadow: black 1px 1px;**/
+border-width: 4px;
+    border-style: inset;
+    border-color: #ba9673;
+    background-color: #CDBA96;
+}
+
+div.elementi_elenco{
+	min-height:20px;
+	border-width:4px;
+	border-style:inset;
+	border-color:#ba9673;
+    background-color:#CDBA96;
+}
+div.elementi_elenco a{
+	color:#171310;
+}
+
+td.casella_elemento, div.elementi_elenco{
+	font-size:14px;
+	min-height: 35px;
+	color: #414d31;
+        
+}
+td.casella_elemento {
+    text-align: justify;
+}
+
+
+div.controllo_elenco input[type='image']{
+	height:15px;
+	width:15px;
+	display:block;
+	margin: 2px 1px;
+}
+
+
+div.elementi_elenco a{
+	font-weight:bolder;
+}
+
+
+div.elementi_elenco a:hover{
+	text-decoration:none;
+}
+
+/**
+	*	Patch by eLDiabolo
+	* 01/09/2012
+	* Aggiunta dichiarazione div nel file main.css per visualizzare il box graficamente
+	***/
+
+
+
+div.cont_news{
+padding: 24px;
+width: 146px;
+overflow-y: hidden;
+overflow-x: hidden;
+height: 174px;
+margin-left: 2px;
+margin-top:-19px;
+}
+
+div.pagina_quest_info div.page_title{
+border-style: solid;
+margin-bottom: 3px;
+margin-top: -2px;
+margin-left: -2px;
+margin-right: -2px;
+padding-bottom: -1px;
+border-width: 0px 0px 2px 0px;
+background-color: black;
+border-color: #CDBA96;
+}
+
+div.pagina_quest_info h2{
+margin-bottom: 3px;
+font-size: 9px;
+color: orange;
+
+}
+
+div.pagina_quest_info div.elenco_record_gioco{
+padding: 2px 2px 2px 2px; 
+margin-top: -3px;
+}
+
+div.pagina_quest_info div.panels_box{
+margin-bottom: 2px;
+}
+
+/** * Stile tabelle nei moduli di gestione */
+div._gestione table{
+	width:95%;
+	margin:10px auto;
+}
+
+
+/** * Accorgimenti Layout */
+
+/** * Allineamento verticale delle colonne 
+*/
+#framecontentLeft { width:214px; 
+}
+div#framecontentRight {width:214px; 
+}
+
+/** * margine delle colonne */
+div.innertube{
+margin-left:0px;
+	margin-top:0px;
+    margin-bottom:0px;
+    height: 100%;
+}
+ div.colonne_dx{width:210px;}
+ 
+ 
+div.descr_luogo{
+	margin:0px auto;
+	padding:2px;
+	width:700px;
+	color:#000000;
+
+
+}
+div.bottone_luoghi{
+	margin:0px auto;
+	width:90px;
+    padding-top: 35px;
+
+
+}
+
+/**
+	*	Patch by Eriannen
+	*   18/09/203
+	*   class per le tre pagine storia, affetti e descrizione fisica nell'avatar
+	***/
