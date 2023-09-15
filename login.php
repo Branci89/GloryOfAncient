@@ -119,7 +119,10 @@ if ((empty($record) === FALSE) && ($record['permessi'] > -1) && (strtotime($reco
     $_SESSION['mercante'] = $flagPresente;
     
     /*Brancix: Auto settaggio dei punti salute max del pg in base alla costituzione: Formula Salute Max = 100 + (5 * Valore Costituzione) */
-    $queryPg = ("UPDATE personaggio SET salute_max = 100 + (".(int)$PARAMETERS['settings']['pt_salute_costituzione']." * car1) WHERE nome = '".$_SESSION['login']."' LIMIT 1");
+    $bonus_oggetti = gdrcd_query("SELECT SUM(oggetto.bonus_car1) AS BO1 FROM oggetto JOIN clgpersonaggiooggetto ON oggetto.id_oggetto = clgpersonaggiooggetto.id_oggetto WHERE clgpersonaggiooggetto.nome = '" . gdrcd_filter('in', $_SESSION['login']) . "' AND clgpersonaggiooggetto.posizione > " . ZAINO . "");
+    $bonus_talenti = gdrcd_query("SELECT SUM(talento.bonus_car1) AS VO1 FROM talento JOIN clgpersonaggiotalento ON talento.id_talento = clgpersonaggiotalento.id_talento WHERE clgpersonaggiotalento.nome = '" . gdrcd_filter('in', $_SESSION['login']) . "' ");
+    
+    $queryPg = ("UPDATE personaggio SET salute_max = 100 + (".(int)$PARAMETERS['settings']['pt_salute_costituzione']." * (car1 + ".$bonus_talenti['VO1']."+".$bonus_oggetti['BO1'].")) WHERE nome = '".$_SESSION['login']."' LIMIT 1");
     gdrcd_query($queryPg);
     
     
