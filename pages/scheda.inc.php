@@ -395,6 +395,33 @@
                                     <?php echo gdrcd_filter('out', $record['salute']) . '/' . gdrcd_filter('out', $record['salute_max']); ?>
                                 </div>
                             </div>
+                            
+                            <div class="profilo_voce">
+                                <div class="profilo_voce_label">
+                                    <?php echo "Fama" ?>:
+                                </div>
+                                <div class="profilo_voce_valore">
+                                    <?php echo gdrcd_filter('out', $record['fama']); ?>
+                                </div>
+                            </div>
+                            
+                            <div class="profilo_voce">
+                                <div class="profilo_voce_label">
+                                    <?php echo "Favore Divino" ?>:
+                                </div>
+                                <div class="profilo_voce_valore">
+                                    <?php echo gdrcd_filter('out', $record['favore_divino']); ?>
+                                </div>
+                            </div>
+                            
+                            <div class="profilo_voce">
+                                <div class="profilo_voce_label">
+                                    <?php echo "Armatura Naturale" ?>:
+                                </div>
+                                <div class="profilo_voce_valore">
+                                    <?php echo gdrcd_filter('out', $record['armatura_naturale']); ?>
+                                </div>
+                            </div>
 
                             <div class="profilo_status">
                                 <div class="profilo_status_label">
