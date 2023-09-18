@@ -27,7 +27,7 @@
                 if ($_SESSION['permessi'] >= GAMEMASTER) {
                     ?>
                     <div class="panels_box"><div class="form_gioco">
-                            <form action="main.php?page=scheda_modifica&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']) ?>" method="post">
+                            <form action="popup.php?page=scheda_modifica&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']) ?>" method="post">
                                 <input type="hidden" value="<?php echo strftime('%Y'); ?>" name="year" />
                                 <input type="hidden" value="<?php echo strftime('%m'); ?>" name="month" />
                                 <input type="hidden" value="<?php echo strftime('%d'); ?>" name="day" />
@@ -130,48 +130,7 @@
 
 
                         <div class="menu_scheda"><!-- Menu scheda -->
-
-
-                            <?php
-                            /* Visualizza il link modifica se l'utente visualizza la propria scheda o se è almeno un capogilda */
-                            if ((gdrcd_filter('out', $_REQUEST['pg']) == $_SESSION['login']) || ($_SESSION['permessi'] >= GUILDMODERATOR)) {
-                                ?>
-                                <a class="none" href="main.php?page=scheda_modifica&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>">
-                                    <img onmouseout="this.src = '../imgs/menu/modifica.png'" onmouseover="this.src = '../imgs/menu/modifica_on.png';" alt="Modifica" src="../imgs/menu/modifica.png">
-                                </a>
-                            <?php } ?>
-
-                            <a class="none"  href="main.php?page=scheda_trans&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>">
-                                <img onmouseout="this.src = '../imgs/menu/transazioni.png'" onmouseover="this.src = '../imgs/menu/transazioni_on.png';" alt="transazioni" src="../imgs/menu/transazioni.png">
-
-                            </a>
-
-                            <a class="none"  href="main.php?page=scheda_px&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>">
-                                <img onmouseout="this.src = '../imgs/menu/esperienza.png'" onmouseover="this.src = '../imgs/menu/esperienza_on.png';" alt="esperienza" src="../imgs/menu/esperienza.png">
-                            </a>
-
-                            <a class="none"  href="main.php?page=scheda_oggetti&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>">
-                                <img onmouseout="this.src = '../imgs/menu/deposito.png'" onmouseover="this.src = '../imgs/menu/deposito_on.png';" alt="deposito" src="../imgs/menu/deposito.png">
-                            </a>
-                            <a class="none"  href="main.php?page=scheda_equip&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>">
-                                <img onmouseout="this.src = '../imgs/menu/con_se.png'" onmouseover="this.src = '../imgs/menu/con_se_on.png';" alt="con_se" src="../imgs/menu/con_se.png">
-                            </a>
-                            <a class="none"  href="main.php?page=scheda_talenti&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>">
-                                <img onmouseout="this.src = '../imgs/menu/doni.png'" onmouseover="this.src = '../imgs/menu/doni_on.png';" alt="doni" src="../imgs/menu/doni.png">
-                            </a>
-
-                            <?php
-                            /* Visualizza il link modifica se l'utente visualizza la propria scheda o se è almeno un capogilda */
-                            if ($_SESSION['permessi'] >= MODERATOR) {
-                                ?>
-                                <a href="main.php?page=scheda_log&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>">
-                                    <?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['menu']['log']); ?>
-                                </a>
-                                <a href="main.php?page=scheda_gst&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>">
-                                    <?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['menu']['gst']); ?>
-                                </a>
-                            <?php } ?>
-
+                            <?php include('scheda/menu_scheda.inc'); ?>
                         </div><!-- Menu scheda -->
 
 
@@ -205,7 +164,7 @@
 
 
                             <div class="ritratto_invia_messaggio"><!-- Link invia messaggio -->
-                                <a href="main.php?page=messages_center&newmessage=yes&reply_dest=<?php echo $record['nome']; ?>" class="link_invia_messaggio">
+                                <a target="_parent" href="main.php?page=messages_center&newmessage=yes&reply_dest=<?php echo $record['nome']; ?>" class="link_invia_messaggio">
                                     <?php if (empty($PARAMETERS['names']['private_message']['image_file']) === FALSE) { ?>
                                         <img src="<?php echo $PARAMETERS['names']['private_message']['image_file']; ?>" 
                                              alt="<?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['send_message_to']['send']) . ' ' . gdrcd_filter('out', $PARAMETERS['names']['private_message']['sing']) . ' ' . gdrcd_filter('out', $MESSAGE['interface']['sheet']['send_message_to']['to']) . ' ' . gdrcd_filter('out', $record['nome']); ?>" 
@@ -479,12 +438,12 @@
                                                                 ($ranks[$row['id_abilita']] < $PARAMETERS['settings']['skills_cap'])) ||
                                                                 ($_SESSION['permessi'] >= MODERATOR)) {
                                                             ?>
-                                                            [<a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']) ?>&op=addskill&what=<?php echo $row['id_abilita'] ?>">+</a>]
+                                                            [<a href="popup.php?page=scheda&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']) ?>&op=addskill&what=<?php echo $row['id_abilita'] ?>">+</a>]
                                                             <?php
                                                             if (($_SESSION['permessi'] >= MODERATOR) &&
                                                                     ($ranks[$row['id_abilita']] > 0)) {
                                                                 ?>
-                                                                [<a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']) ?>&op=subskill&what=<?php echo $row['id_abilita'] ?>">-</a>]
+                                                                [<a href="popup.php?page=scheda&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']) ?>&op=subskill&what=<?php echo $row['id_abilita'] ?>">-</a>]
                                                             <?php } ?>
                                                             <?php
                                                         } else {
@@ -516,19 +475,19 @@
                                 <TR><td width="25%">
                                         <!-- inizio codice che fa aprire la pagina storia-->
                                         <div class="bottone_luoghi" align="center">
-                                            <p align="center"><a href="/main.php?page=scheda_storia&pg=<?php echo $record['nome']; ?>"><img src="/themes/advanced/imgs/menu/storiapersonale.png" style="margin-top: -20px; "></a>
+                                            <p align="center"><a href="/popup.php?page=scheda_storia&pg=<?php echo $record['nome']; ?>"><img src="/themes/advanced/imgs/menu/storiapersonale.png" style="margin-top: -20px; "></a>
                                         </div></td>
                                     <!-- fine codice che fa aprire la pagina storia -->
 
                                     <!-- inizio codice che fa aprire la pagina descrizione fisica-->
                                     <td width="25%"><div class="bottone_luoghi" align="center">
-                                            <p align="center"><a href="/main.php?page=scheda_descrfisica&pg=<?php echo $record['nome']; ?>"><img src="/themes/advanced/imgs/menu/descrizionefisica.png" style="margin-top: -20px; "></a>
+                                            <p align="center"><a href="/popup.php?page=scheda_descrfisica&pg=<?php echo $record['nome']; ?>"><img src="/themes/advanced/imgs/menu/descrizionefisica.png" style="margin-top: -20px; "></a>
                                         </div></td>
                                     <!-- fine codice che fa aprire la pagina descrizione fisica -->
 
                                     <!-- inizio codice che fa aprire la pagina affetti-->
                                     <td width="25%"><div class="bottone_luoghi" align="center">
-                                            <p align="center"><a href="/main.php?page=scheda_affetti&pg=<?php echo $record['nome']; ?>"><img src="/themes/advanced/imgs/menu/affetti.png" style="margin-top: -20px; "></a>
+                                            <p align="center"><a href="/popup.php?page=scheda_affetti&pg=<?php echo $record['nome']; ?>"><img src="/themes/advanced/imgs/menu/affetti.png" style="margin-top: -20px; "></a>
                                         </div></td></TR>
                                 </TD></TR></TBODY></TABLE>
                         <!-- fine codice che fa aprire la pagina affetti -->
@@ -547,7 +506,7 @@
                     ?>
                     <!-- Link a piè di pagina -->
                     <div class="link_back">
-                        <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('url', $_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['link']['back']); ?></a>
+                        <a href="popup.php?page=scheda&pg=<?php echo gdrcd_filter('url', $_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['link']['back']); ?></a>
                     </div>
                     <?php
                 }//else

@@ -26,7 +26,7 @@ if (isset($_REQUEST['pg'])===FALSE){
            echo '<div class="warning">'.gdrcd_filter('out',$record['nome']).' '.gdrcd_filter('out',$record['cognome']).' '.gdrcd_filter('out',$MESSAGE['warning']['character_exiled']).' '.gdrcd_format_date($record['esilio']).' ('.$record['motivo_esilio'].' - '.$record['autore_esilio'].')</div>';
            if ($_SESSION['permessi']>=GAMEMASTER){?>
               <div class="panels_box"><div class="form_gioco">
-              <form action="main.php?page=scheda_modifica&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']) ?>" method="post">
+              <form action="popup.php?page=scheda_modifica&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']) ?>" method="post">
 			      <input type="hidden" value="<?php echo strftime('%Y'); ?>" name="year" />
 			      <input type="hidden" value="<?php echo strftime('%m'); ?>" name="month" />
 			      <input type="hidden" value="<?php echo strftime('%d'); ?>" name="day" />
@@ -163,7 +163,7 @@ if ($PARAMETERS['mode']['alert_password_change']=='ON')
 			echo gdrcd_html_filter($record['affetti']);
 		}
 	?>
-    <p align="center"><a href="/main.php?page=scheda&pg=<?php echo $record['nome']; ?>"><img src="/themes/advanced/imgs/menu/avatar2.png"></a>
+    <p align="center"><a href="/popup.php?page=scheda&pg=<?php echo $record['nome']; ?>"><img src="/themes/advanced/imgs/menu/avatar2.png"></a>
 
   </div>
 
@@ -182,7 +182,7 @@ if ($PARAMETERS['mode']['alert_password_change']=='ON')
 } else { ?>
 <!-- Link a piè di pagina -->
 <div class="link_back">
-   <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['link']['back']); ?></a>
+   <a href="popup.php?page=scheda&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['link']['back']); ?></a>
 </div>
 <?php }//else
 

@@ -134,7 +134,7 @@ if (gdrcd_query($result, 'num_rows')>0){
     <div class="elementi_elenco"><?php echo gdrcd_filter('out',gdrcd_format_date($record['spedito']).' '.gdrcd_format_time($record['spedito'])); ?></div>      
   </td>
   <td class="casella_elemento">
-    <div class="elementi_elenco"><?php echo '[<a href="main.php?page=scheda&pg='.gdrcd_filter('out',$record['destinatario']).'"  >'.gdrcd_filter('out',$record['destinatario']).'</a>]: '.gdrcd_filter('out',$record['testo']); ?></div>      
+    <div class="elementi_elenco"><?php echo '[<a href="popup.php?page=scheda&pg='.gdrcd_filter('out',$record['destinatario']).'"  >'.gdrcd_filter('out',$record['destinatario']).'</a>]: '.gdrcd_filter('out',$record['testo']); ?></div>      
   </td>
 </tr>
 <?php }//while 
@@ -198,7 +198,7 @@ if (gdrcd_query($result, 'num_rows')>0){
 
 <!-- Link a piè di pagina -->
 <div class="link_back">
-   <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['link']['back']); ?></a>
+   <a href="popup.php?page=scheda&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['link']['back']); ?></a>
 </div>
 
 

@@ -505,7 +505,7 @@ $PARAMETERS['menu']['map']['image_file'] = '';
 $PARAMETERS['menu']['map']['image_file_onclick'] = '';
 
 $PARAMETERS['menu']['profile']['text'] = 'Scheda';
-$PARAMETERS['menu']['profile']['url'] = 'main.php?page=scheda&pg=' . $_SESSION['login'];
+$PARAMETERS['menu']['profile']['url'] = "javascript:modalWindow('scheda', 'Scheda di ". $_SESSION['login'] ."', 'popup.php?page=scheda&pg=". $_SESSION['login'] ."' , '650','850')";
 $PARAMETERS['menu']['profile']['image_file'] = '';
 $PARAMETERS['menu']['profile']['image_file_onclick'] = '';
 

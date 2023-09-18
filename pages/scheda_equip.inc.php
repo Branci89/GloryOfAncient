@@ -371,7 +371,7 @@ $result=gdrcd_query("SELECT oggetto.id_oggetto, oggetto.nome AS nome_oggetto, og
   <?php if(($_SESSION['login']==$_REQUEST['pg'])||($_SESSION['permessi']>=GAMEMASTER)){ ?> 
    <div class="form_gioco">
      <!-- Abbandona -->
-	 <form action="main.php?page=scheda_equip"
+	 <form action="popup.php?page=scheda_equip"
 		   method="post">
         <input type="hidden" 
 		       value="<?php echo gdrcd_filter('out',$_REQUEST['pg']); ?>"
@@ -392,7 +392,7 @@ $result=gdrcd_query("SELECT oggetto.id_oggetto, oggetto.nome AS nome_oggetto, og
 		       value="<?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['items']['list']['drop']);?>" />
 	 </form>
 	 <!-- Riponi -->
-	 <form action="main.php?page=scheda_oggetti"
+	 <form action="popup.php?page=scheda_oggetti"
 		   method="post">
         <input type="hidden" 
 		       value="<?php echo gdrcd_filter('out',$_REQUEST['pg']); ?>"
@@ -421,7 +421,7 @@ $result=gdrcd_query("SELECT oggetto.id_oggetto, oggetto.nome AS nome_oggetto, og
 	    /*Se la locazione è libera*/
 	    if(isset($oggetti[$record['ubicabile']])===FALSE){ ?>
 	    <!-- Indossa (se indossabile) -->
-	    <form action="main.php?page=scheda_equip"
+	    <form action="popup.php?page=scheda_equip"
 		      method="post">
            <input type="hidden" 
 	              value="<?php echo gdrcd_filter('out',$_REQUEST['pg']); ?>"
@@ -441,7 +441,7 @@ $result=gdrcd_query("SELECT oggetto.id_oggetto, oggetto.nome AS nome_oggetto, og
 	    <?php } //if 
 		if(isset($oggetti[2])===FALSE){ ?>
         <!-- Impugna DX -->
-	    <form action="main.php?page=scheda_equip"
+	    <form action="popup.php?page=scheda_equip"
 		      method="post">
            <input type="hidden" 
 	              value="<?php echo gdrcd_filter('out',$_REQUEST['pg']); ?>"
@@ -461,7 +461,7 @@ $result=gdrcd_query("SELECT oggetto.id_oggetto, oggetto.nome AS nome_oggetto, og
 	    <?php } //if 
 		if (isset($oggetti[3])===FALSE){ ?>
 	    <!-- Impugna SX-->
-	    <form action="main.php?page=scheda_equip"
+	    <form action="popup.php?page=scheda_equip"
 		      method="post">
            <input type="hidden" 
 	              value="<?php echo gdrcd_filter('out',$_REQUEST['pg']); ?>"
@@ -482,7 +482,7 @@ $result=gdrcd_query("SELECT oggetto.id_oggetto, oggetto.nome AS nome_oggetto, og
 		
      } else { ?>
 
-	 <form action="main.php?page=scheda_equip"
+	 <form action="popup.php?page=scheda_equip"
 		   method="post">
         <input type="hidden" 
 		       value="<?php echo gdrcd_filter('out',$_REQUEST['pg']); ?>"
@@ -518,7 +518,7 @@ $result=gdrcd_query("SELECT oggetto.id_oggetto, oggetto.nome AS nome_oggetto, og
 	 
 	 $characters=gdrcd_query($query, 'result');
      if(gdrcd_query($characters, 'num_rows')>0){ ?>
-	 <form action="main.php?page=scheda_equip"
+	 <form action="popup.php?page=scheda_equip"
 		   method="post">
         <input type="hidden" 
 		       value="<?php echo gdrcd_filter('out',$_REQUEST['pg']); ?>"
@@ -570,8 +570,8 @@ gdrcd_query($result, 'free');
 </div>
 <!-- Link a piè di pagina -->
 <div class="link_back">
-   <a href="main.php?page=scheda_oggetti&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['menu']['inventory']).'.'; ?></a><br />
-   <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['link']['back']); ?></a>
+   <a href="popup.php?page=scheda_oggetti&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['menu']['inventory']).'.'; ?></a><br />
+   <a href="popup.php?page=scheda&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['link']['back']); ?></a>
 </div>
 
 

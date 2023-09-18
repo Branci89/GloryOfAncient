@@ -29,7 +29,7 @@ if (isset($_REQUEST['pg'])===FALSE){
 ?> 
   <div class="form_gioco">   
   <!-- Form utente modifica -->
-  <form action="main.php?page=scheda_gst" method="post">
+  <form action="popup.php?page=scheda_gst" method="post">
 
 	<div class='form_label'>
 	   <?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['modify_form']['admin']['email']); ?>
@@ -235,7 +235,7 @@ if (isset($_REQUEST['pg'])===FALSE){
 </div>
 <!-- Link a piè di pagina -->
 <div class="link_back">
-   <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['link']['back']); ?></a>
+   <a href="popup.php?page=scheda&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['link']['back']); ?></a>
 </div>
 
 </div><!-- pagina -->

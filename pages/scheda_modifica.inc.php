@@ -1,4 +1,4 @@
-<div class="pagina_schedam_odifica">
+<div class="pagina_schedam_odifica" style="height:650px; overflow: auto;">
     <!---  Eriannen  Copyright (c) 2013 L'uso di questo script è libero senza alcuna restrizione paolo53b@gmail.com  --->
     <?php
     /* HELP: */
@@ -38,8 +38,8 @@
                  */
                 $blocca_media = (strtolower($_POST['blocca_media']) == 'on') ? 1 : 0;
 
-                if ($_SESSION['login'] == $_REQUEST['pg'])
-                    $_SESSION['blocca_media'] = $blocca_media;
+                if ($_SESSION['login'] == $_REQUEST['pg']){
+                    $_SESSION['blocca_media'] = $blocca_media;}
 
 
                 /* Se l'utente ha richiesto di modificare la propria scheda */
@@ -113,7 +113,7 @@
                         ?> 
                         <div class="form_gioco">   
                             <!-- Form utente modifica -->
-                            <form action="main.php?page=scheda_modifica" method="post">
+                            <form action="popup.php?page=scheda_modifica" method="post">
 
                                 <div class='form_label'>
                                     <?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['modify_form']['last_name']); ?>
@@ -227,7 +227,7 @@
                         <div class='form_gioco'>
 
                             <!-- Form master status -->
-                            <form action="main.php?page=scheda_modifica" method="post">
+                            <form action="popup.php?page=scheda_modifica" method="post">
 
                                 <input type="hidden" name="op" value="modify_status" />
 
@@ -273,7 +273,7 @@
 
                             </form>
                             <!-- Form master esilio -->
-                            <form action="main.php?page=scheda_modifica" method="post">
+                            <form action="popup.php?page=scheda_modifica" method="post">
 
 
                                 <input type="hidden" name="op" value="exile" />
@@ -341,7 +341,7 @@
     </div>
     <!-- Link a piè di pagina -->
     <div class="link_back">
-        <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['link']['back']); ?></a>
+        <a href="popup.php?page=scheda&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['link']['back']); ?></a>
     </div>
 
 </div><!-- pagina -->

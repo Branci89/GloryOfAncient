@@ -98,7 +98,7 @@ $query="SELECT esperienza FROM personaggio WHERE nome = '".gdrcd_filter('in',$_R
 
 <?php if($_SESSION['permessi']>=GAMEMASTER){ ?>
 <div class="form_gioco">
-<form action="main.php?page=scheda_px" 
+<form action="popup.php?page=scheda_px" 
       method="post">
    <div class="form_label"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['px']['why']);?></div>
    <div class="form_field"><input name="causale" /></div>
@@ -118,7 +118,7 @@ $query="SELECT esperienza FROM personaggio WHERE nome = '".gdrcd_filter('in',$_R
 </div>
 <!-- Link a piè di pagina -->
 <div class="link_back">
-   <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['link']['back']); ?></a>
+   <a href="popup.php?page=scheda&pg=<?php echo gdrcd_filter('get',$_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out',$MESSAGE['interface']['sheet']['link']['back']); ?></a>
 </div>
 
 

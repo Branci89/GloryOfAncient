@@ -186,7 +186,7 @@
                                         <?php if (($_SESSION['login'] == $_REQUEST['pg']) || ($_SESSION['permessi'] >= MODERATOR)) { ?> 
                                             <div class="form_gioco">
                                                 <!-- Abbandona -->
-                                                <form action="main.php?page=scheda_talenti"
+                                                <form action="popup.php?page=scheda_talenti"
                                                       method="post">
                                                     <input type="hidden" 
                                                            value="abbandona" 
@@ -205,7 +205,7 @@
                                                 </form>
                                                 <?php if ($record['ubicabile'] > 0) { ?>
                                                     <!-- Zaino -->
-                                                    <form action="main.php?page=scheda_talenti"
+                                                    <form action="popup.php?page=scheda_talenti"
                                                           method="post">
                                                         <input type="hidden" 
                                                                value="in_zaino" 
@@ -242,7 +242,7 @@
                 <!-- Link a piè di pagina -->
                 <div class="link_back">
 
-                    <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['link']['back']); ?></a>
+                    <a href="popup.php?page=scheda&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['link']['back']); ?></a>
                 </div>
 
 

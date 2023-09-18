@@ -219,7 +219,7 @@
                                             </div><?php } else if ($_SESSION['login'] == gdrcd_filter('get', $_REQUEST['pg'])) {//if  ?>
                                             <div>
                                                 <!-- Commento -->
-                                                <form action="main.php?page=scheda_oggetti"
+                                                <form action="popup.php?page=scheda_oggetti"
                                                       method="post">
                                                     <input type="hidden" 
                                                            value="commenta" 
@@ -241,7 +241,7 @@
                                         <?php if ($_SESSION['login'] == $_REQUEST['pg']) { ?> 
                                             <div class="form_gioco">
                                                 <!-- Abbandona -->
-                                                <form action="main.php?page=scheda_oggetti"
+                                                <form action="popup.php?page=scheda_oggetti"
                                                       method="post">
                                                     <input type="hidden" 
                                                            value="abbandona" 
@@ -260,7 +260,7 @@
                                                 </form>
                                                 <?php if ($record['ubicabile'] > 0) { ?>
                                                     <!-- Zaino -->
-                                                    <form action="main.php?page=scheda_equip"
+                                                    <form action="popup.php?page=scheda_equip"
                                                           method="post">
                                                         <input type="hidden" 
                                                                value="in_zaino" 
@@ -296,8 +296,8 @@
                 </div>
                 <!-- Link a piè di pagina -->
                 <div class="link_back">
-                    <a href="main.php?page=scheda_equip&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['items']['list']['put_in']) . '.'; ?></a><br />
-                    <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['link']['back']); ?></a>
+                    <a href="popup.php?page=scheda_equip&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['items']['list']['put_in']) . '.'; ?></a><br />
+                    <a href="popup.php?page=scheda&pg=<?php echo gdrcd_filter('get', $_REQUEST['pg']); ?>"><?php echo gdrcd_filter('out', $MESSAGE['interface']['sheet']['link']['back']); ?></a>
                 </div>
 
 
