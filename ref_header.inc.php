@@ -113,6 +113,8 @@ if ((gdrcd_filter_get($_REQUEST['chat']) == 'yes') && (empty($_SESSION['login'])
     }
     /* Se ho inviato un messaggio */
     if (gdrcd_filter('get', $_POST['op']) == 'new_chat_message') {
+        $sussurro_all = false;
+        
         $actual_healt = gdrcd_query("SELECT salute FROM personaggio WHERE nome = '" . $_SESSION['login'] . "'");
         $chat_message = gdrcd_filter('in', gdrcd_angs($_POST['message']));
         $tag_n_beyond = gdrcd_filter('in', $_POST['tag']);
@@ -155,8 +157,22 @@ if ((gdrcd_filter_get($_REQUEST['chat']) == 'yes') && (empty($_SESSION['login'])
                     $m_type = 'C';
                     if (preg_match("/^#d+([1-9][0-9]*)$/si", $chat_message, $matches)) {
                         $nstring = $matches[1];
-                        $die = mt_rand(1, (int) $nstring);
-                        $chat_message = "A " . $_SESSION['login'] . " esce " . $die . " su " . $nstring;
+                        $maxDice = (int) $nstring;
+                        //Modifica
+                        $die = mt_rand(1, 10);
+                        $attack = "";
+                        if($die > 7){
+                            $attack = "colpisce in modo critico (x2 danni)";
+                        }
+                        if($die > 3 && $die <= 7){
+                            $attack = "colpisce in pieno (x1 danni)";
+                        }
+                        if($die <= 3){
+                            $attack = "colpisce di striscio (danni dimezzati)";
+                        }
+                                                
+                        $chat_message = "" . $_SESSION['login'] . " attacca e ". $attack;                      
+                        
                     } else if (preg_match("/^#([1-9][0-9]*)d+([1-9][0-9]*)$/si", $chat_message, $matches)) {
                         $numero = (int) $matches[1];
                         $dado = (int) $matches[2];
@@ -192,7 +208,10 @@ if ((gdrcd_filter_get($_REQUEST['chat']) == 'yes') && (empty($_SESSION['login'])
                 } elseif (($type == "3") && ($_SESSION['permessi'] >= GAMEMASTER)) { /* PNG */
                     $m_type = 'N';
                     $_SESSION['tag'] = $tag_n_beyond;
-                } else if (($type == "0") || (empty($type) === TRUE)) { /* Parlato */
+                } else if ($first_char == "&"){ //sussurro a tutti @Author Chetoplez
+                    $sussurro_all = true;
+                }
+                  else if (($type == "0") || (empty($type) === TRUE)) { /* Parlato */
                     if ($actual_healt['salute'] > 0) {
                         $m_type = 'P';
                         $_SESSION['tag'] = $tag_n_beyond;
@@ -203,7 +222,18 @@ if ((gdrcd_filter_get($_REQUEST['chat']) == 'yes') && (empty($_SESSION['login'])
                     }
                 } //elseif
                 /* Inserisco il messaggio */
-                gdrcd_query("INSERT INTO chat ( stanza, imgs, mittente, destinatario, ora, tipo, testo ) VALUES (" . $_SESSION['luogo'] . ", '" . $_SESSION['sesso'] . ";" . $_SESSION['img_razza'] . "', '" . $_SESSION['login'] . "', '" . gdrcd_capital_letter(gdrcd_filter('in', $tag_n_beyond)) . "', NOW(), '" . $m_type . "', '" . $chat_message . "')");
+                //Se attivo sussurra tutti, allora dobbiamo inserire più messaggi di sussurro
+                if($sussurro_all == true){
+                    $m_type = 'S';
+                    $chat_message = ltrim($chat_message, '&');
+                    $r_check_dest = gdrcd_query("SELECT nome FROM personaggio WHERE DATE_ADD(ultimo_refresh, INTERVAL 2 MINUTE) > NOW() AND ultimo_luogo = " . $_SESSION['luogo'] . " ", 'result');
+                    while ($members = gdrcd_query($r_check_dest, 'fetch')){
+                        gdrcd_query("INSERT INTO chat ( stanza, imgs, mittente, destinatario, ora, tipo, testo ) VALUES (" . $_SESSION['luogo'] . ", '" . $_SESSION['sesso'] . ";" . $_SESSION['img_razza'] . "', '" . $_SESSION['login'] . "', '" . gdrcd_capital_letter(gdrcd_filter('in', $members['nome'])) . "', NOW(), '" . $m_type . "', '" . $chat_message . "')");
+                    }
+                }else{
+                    gdrcd_query("INSERT INTO chat ( stanza, imgs, mittente, destinatario, ora, tipo, testo ) VALUES (" . $_SESSION['luogo'] . ", '" . $_SESSION['sesso'] . ";" . $_SESSION['img_razza'] . "', '" . $_SESSION['login'] . "', '" . gdrcd_capital_letter(gdrcd_filter('in', $tag_n_beyond)) . "', NOW(), '" . $m_type . "', '" . $chat_message . "')");
+                }
+                            
                 if ($PARAMETERS['mode']['exp_by_chat'] == 'ON') {
                     if ($m_type == 'A' || $m_type == 'P') {
                         gdrcd_query("UPDATE personaggio SET esperienza = esperienza + " . $exp_bonus . " WHERE nome = '" . $_SESSION['login'] . "' LIMIT 1");
@@ -329,8 +359,8 @@ if ((gdrcd_filter_get($_REQUEST['chat']) == 'yes') && (empty($_SESSION['login'])
                     $add_chat .= '<span class="chat_tag"><a href="#" onclick="Javascript: document.getElementById(\'tag\').value=\'' . $row['destinatario'] . '\';  document.getElementById(\'type\')[0].selected = \'2\'; document.getElementById(\'message\').focus();"> [' . gdrcd_filter('out', $row['destinatario']) . ']</a></span>';
                 }
                 $add_chat .= ': </span> ';
-                $add_chat .= '<span class="chat_msg">' . gdrcd_chatme($_SESSION['login'], gdrcd_chatcolor(gdrcd_filter('out', $row['testo']), 'P')) . '</span>';
-                /*** Fix problema visualizzazione spazi vuoti con i sussurri
+                $add_chat .= '<span class="chat_msg">' . gdrcd_chatme($_SESSION['login'], gdrcd_chatcolor(gdrcd_filter('out', $row['testo']))) . '</span>';
+                /**                 * Fix problema visualizzazione spazi vuoti con i sussurri
                  * @author eLDiabolo
                  */
                 if ($PARAMETERS['mode']['chat_avatar'] == 'ON') {
@@ -358,7 +388,7 @@ if ((gdrcd_filter_get($_REQUEST['chat']) == 'yes') && (empty($_SESSION['login'])
                     $add_chat .= '<span class="chat_tag"> [' . gdrcd_filter('out', $row['destinatario']) . ']</span>';
                 }
                 $add_chat .= '</span> ';
-                $add_chat .= '<span class="chat_msg">' . gdrcd_chatme($_SESSION['login'], gdrcd_chatcolor(gdrcd_filter('out', $row['testo'])),'P') . '</span>';
+                $add_chat .= '<span class="chat_msg">' . gdrcd_chatme($_SESSION['login'], gdrcd_chatcolor(gdrcd_filter('out', $row['testo']))) . '</span>';
                 /**                 * Fix problema visualizzazione spazi vuoti con i sussurri
                  * @author eLDiabolo
                  */
@@ -410,7 +440,7 @@ if ((gdrcd_filter_get($_REQUEST['chat']) == 'yes') && (empty($_SESSION['login'])
                 $add_chat .= '<div class="chat_row_' . $row['tipo'] . '">';
                 $add_chat .= '<span class="chat_time">' . gdrcd_format_time($row['ora']) . '</span>';
                 $add_chat .= '<span class="chat_name">' . $row['destinatario'] . '</span> ';
-                $add_chat .= '<span class="chat_msg">' . gdrcd_chatcolor(gdrcd_filter('out', $row['testo']), 'N') . '</span>';
+                $add_chat .= '<span class="chat_msg">' . gdrcd_chatcolor(gdrcd_filter('out', $row['testo'])) . '</span>';
                 /**                 * Fix problema visualizzazione spazi vuoti con i sussurri
                  * @author eLDiabolo
                  */
@@ -421,7 +451,7 @@ if ((gdrcd_filter_get($_REQUEST['chat']) == 'yes') && (empty($_SESSION['login'])
                  * @author eLDiabolo
                  */
                 $add_chat .= '<div class="chat_row_' . $row['tipo'] . '">';
-                $add_chat .= '<span class="chat_master">' . gdrcd_chatme_master($_SESSION['login'], gdrcd_chatcolor(gdrcd_filter('out', $row['testo']),'M')) . '</span>';
+                $add_chat .= '<span class="chat_master">' . gdrcd_chatme_master($_SESSION['login'], gdrcd_filter('out', $row['testo'])) . '</span>';
                 /**                 * Fix problema visualizzazione spazi vuoti con i sussurri
                  * @author eLDiabolo
                  */
