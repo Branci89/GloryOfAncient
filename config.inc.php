@@ -509,6 +509,11 @@ $PARAMETERS['menu']['profile']['url'] = "javascript:modalWindow('scheda', 'Sched
 $PARAMETERS['menu']['profile']['image_file'] = '';
 $PARAMETERS['menu']['profile']['image_file_onclick'] = '';
 
+$PARAMETERS['menu']['presenti']['text'] = 'Presenti Estesi';
+$PARAMETERS['menu']['presenti']['url'] = "javascript:modalWindow('presenti', 'Presenti', 'popup.php?page=presenti_estesi' , '650','850')";
+$PARAMETERS['menu']['presenti']['image_file'] = '';
+$PARAMETERS['menu']['presenti']['image_file_onclick'] = '';
+
 $PARAMETERS['menu']['forum']['text'] = 'Bacheca';
 $PARAMETERS['menu']['forum']['url'] = 'main.php?page=forum';
 $PARAMETERS['menu']['forum']['image_file'] = '';

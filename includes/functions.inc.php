@@ -285,11 +285,28 @@ function gdrcd_mysql_error($details = false) {
  * @param string $str : la password o stringa di cui calcolare l'hash
  * @return l'hash calcolato a partire da $str con l'algoritmo specificato nella configurazione
  */
-function gdrcd_encript($str) {
-    require_once(dirname(__FILE__) . '/PasswordHash.php');
-    $hasher = new PasswordHash(8, true);
-
-    return $hasher->HashPassword($str);
+function gdrcd_encript($str)
+{
+	$encript_password = $GLOBALS['PARAMETERS']['mode']['encriptpassword'];
+	$encript_algorithm = $GLOBALS['PARAMETERS']['mode']['encriptalgorithm'];
+	if ($encript_password == 'ON')
+	{
+		switch ($encript_algorithm)
+		{
+			case 'MD5':		
+				$str = md5($str);
+				break;
+      			case 'BCRYPT':
+        			require_once(__DIR__.'/PasswordHash.php');
+        			$hasher=new PasswordHash(8,true);
+        			$str=$hasher->HashPassword($str);
+        			break;
+			case 'SHA-1':
+        			$str = sha1($str);
+        			break;
+		}
+	}
+	return $str;
 }
 
 function gdrcd_password_check($pass, $stored) {
