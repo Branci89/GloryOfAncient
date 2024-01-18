@@ -109,7 +109,7 @@ $info = gdrcd_query("SELECT nome, stanza_apparente, invitati, privata, proprieta
                                     <div class="casella_chat">
                                         <?php $result = gdrcd_query("SELECT id_abilita, nome FROM abilita WHERE id_razza=-1 OR id_razza IN (SELECT id_razza FROM personaggio WHERE nome = '" . $_SESSION['login'] . "') ORDER BY nome", 'result'); ?>
                                         <select name="id_ab" id="id_ab">
-                                            <option value="no_skill"></option>
+                                            <option value="no_skill">Seleziona...</option>
                                             <?php while ($row = gdrcd_query($result, 'fetch')) {
                                                 ?>
                                                 <option value="<?php echo $row['id_abilita']; ?>">
@@ -127,7 +127,7 @@ $info = gdrcd_query("SELECT nome, stanza_apparente, invitati, privata, proprieta
 
                                     <div class="casella_chat">
                                         <select name="id_stats" id="id_stats">
-                                            <option value="no_stats"></option>
+                                            <option value="no_stats">Seleziona..</option>
                                             <?php
                                             /**                                             * Questo modulo aggiunge la possibilit�  di eseguire prove col dado e caratteristica.
                                              * Pertanto sono qui elencate tutte le caratteristiche del pg.
@@ -170,7 +170,7 @@ $info = gdrcd_query("SELECT nome, stanza_apparente, invitati, privata, proprieta
                                             }
                                             ?>
                                         </select>
-                                        <br/><span class="casella_info"><?php echo gdrcd_filter('out', $MESSAGE['chat']['commands']['dice']); ?></span>
+                                        <br/><span class="casella_info">Esito</span>
                                     </div>
 
                                     <?php
