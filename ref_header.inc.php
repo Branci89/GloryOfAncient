@@ -224,12 +224,13 @@ if ((gdrcd_filter_get($_REQUEST['chat']) == 'yes') && (empty($_SESSION['login'])
                 /* Inserisco il messaggio */
                 //Se attivo sussurra tutti, allora dobbiamo inserire più messaggi di sussurro
                 if($sussurro_all == true){
-                    $m_type = 'S';
+                    $m_type = 'Y';
                     $chat_message = ltrim($chat_message, '&');
-                    $r_check_dest = gdrcd_query("SELECT nome FROM personaggio WHERE DATE_ADD(ultimo_refresh, INTERVAL 2 MINUTE) > NOW() AND ultimo_luogo = " . $_SESSION['luogo'] . " ", 'result');
+                    /*$r_check_dest = gdrcd_query("SELECT nome FROM personaggio WHERE DATE_ADD(ultimo_refresh, INTERVAL 2 MINUTE) > NOW() AND ultimo_luogo = " . $_SESSION['luogo'] . " ", 'result');
                     while ($members = gdrcd_query($r_check_dest, 'fetch')){
                         gdrcd_query("INSERT INTO chat ( stanza, imgs, mittente, destinatario, ora, tipo, testo ) VALUES (" . $_SESSION['luogo'] . ", '" . $_SESSION['sesso'] . ";" . $_SESSION['img_razza'] . "', '" . $_SESSION['login'] . "', '" . gdrcd_capital_letter(gdrcd_filter('in', $members['nome'])) . "', NOW(), '" . $m_type . "', '" . $chat_message . "')");
-                    }
+                    }*/
+                    gdrcd_query("INSERT INTO chat ( stanza, imgs, mittente, destinatario, ora, tipo, testo ) VALUES (" . $_SESSION['luogo'] . ", '" . $_SESSION['sesso'] . ";" . $_SESSION['img_razza'] . "', '" . $_SESSION['login'] . "', '" . gdrcd_capital_letter(gdrcd_filter('in', $tag_n_beyond)) . "', NOW(), '" . $m_type . "', '" . $chat_message . "')");
                 }else{
                     gdrcd_query("INSERT INTO chat ( stanza, imgs, mittente, destinatario, ora, tipo, testo ) VALUES (" . $_SESSION['luogo'] . ", '" . $_SESSION['sesso'] . ";" . $_SESSION['img_razza'] . "', '" . $_SESSION['login'] . "', '" . gdrcd_capital_letter(gdrcd_filter('in', $tag_n_beyond)) . "', NOW(), '" . $m_type . "', '" . $chat_message . "')");
                 }
@@ -287,7 +288,7 @@ if ((gdrcd_filter_get($_REQUEST['chat']) == 'yes') && (empty($_SESSION['login'])
 						FROM chat
 						INNER JOIN mappa ON mappa.id = chat.stanza
 						LEFT JOIN personaggio ON personaggio.nome = chat.mittente
-						WHERE chat.id > " . $last_message . " AND stanza = " . $_SESSION['luogo'] . " AND chat.ora > IFNULL(mappa.ora_prenotazione, '0000-00-00 00:00:00') AND DATE_SUB(NOW(), INTERVAL 30 MINUTE) < ora ORDER BY id " . $typeOrder, 'result');
+						WHERE chat.id > " . $last_message . " AND stanza = " . $_SESSION['luogo'] . " AND chat.ora > IFNULL(mappa.ora_prenotazione, '0000-00-00 00:00:00') AND DATE_SUB(NOW(), INTERVAL 90 MINUTE) < ora ORDER BY id " . $typeOrder, 'result');
     while ($row = gdrcd_query($query, 'fetch')) {
         //Impedisci XSS nelle immagini
 
@@ -432,6 +433,18 @@ if ((gdrcd_filter_get($_REQUEST['chat']) == 'yes') && (empty($_SESSION['login'])
                      */
                     $add_chat .= '</div>';
                 }
+                break;
+            case 'Y':
+                /**                 * Fix problema visualizzazione spazi vuoti con i sussurri
+                 * @author eLDiabolo
+                 */
+                $add_chat .= '<div class="chat_row_S">';
+                /**                 * Avatar di chat
+                 * @author Blancks
+                 */
+                $add_chat .= '<span class="chat_name">' . $row['mittente'] . ' Sussurra a tutti: </span> ';
+                $add_chat .= '<span class="chat_msg">' . gdrcd_filter('out', $row['testo']) . '</span>';
+                $add_chat .= '</div>';
                 break;
             case 'N':
                 /**                 * Fix problema visualizzazione spazi vuoti con i sussurri
