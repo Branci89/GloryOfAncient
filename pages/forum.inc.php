@@ -54,13 +54,13 @@
                         <?php echo gdrcd_filter('out', $MESSAGE['warning']['inserted']); ?>
                     </div>
                     <div class="link_back">
-                        <a href="main.php?page=forum">
+                        <a href="popup.php?page=forum">
                             <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['back']); ?>
                         </a>
                     </div>
                     <?php
                     gdrcd_query("DELETE FROM araldo_letto WHERE thread_id = " . gdrcd_filter('num', $_POST['padre']) . " AND nome != '" . $_SESSION['login'] . "'");
-                    gdrcd_redirect('main.php?page=forum&op=read&what=' . gdrcd_filter('num', $_POST['padre']) . '&where=' . $araldoData['id_araldo']);
+                    gdrcd_redirect('popup.php?page=forum&op=read&what=' . gdrcd_filter('num', $_POST['padre']) . '&where=' . $araldoData['id_araldo']);
                 } else {
                     echo '<div class="warning">' . gdrcd_filter('out', $MESSAGE['error']['not_allowed']) . '</div>';
                 }
@@ -85,15 +85,15 @@
                     <?php echo gdrcd_filter('out', $MESSAGE['warning']['modified']); ?>
                 </div>
                 <div class="link_back">
-                    <a href="main.php?page=forum">
+                    <a href="popup.php?page=forum">
                         <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['back']); ?>
                     </a>
                 </div>
                 <?php
                 if ($row['id_messaggio_padre'] == -1) {
-                    gdrcd_redirect('main.php?page=forum&op=read&what=' . gdrcd_filter('num', $_POST['id_messaggio']) . '&where=' . gdrcd_filter('num', $_POST['araldo']));
+                    gdrcd_redirect('popup.php?page=forum&op=read&what=' . gdrcd_filter('num', $_POST['id_messaggio']) . '&where=' . gdrcd_filter('num', $_POST['araldo']));
                 } else {
-                    gdrcd_redirect('main.php?page=forum&op=read&what=' . gdrcd_filter('num', $row['id_messaggio_padre']) . '&where=' . gdrcd_filter('num', $_POST['araldo']));
+                    gdrcd_redirect('popup.php?page=forum&op=read&what=' . gdrcd_filter('num', $row['id_messaggio_padre']) . '&where=' . gdrcd_filter('num', $_POST['araldo']));
                 }
             } else {
                 ?>
@@ -113,7 +113,7 @@
             ?>
             <div class="panels_box">
                 <div class="form_gioco">
-                    <form action="main.php?page=forum"
+                    <form action="popup.php?page=forum"
                           method="post">
                               <?php if ($row['id_messaggio_padre'] == -1) {/* Se è il primo di un topic serve un titolo */ ?>
                             <div class="form_label">
@@ -154,7 +154,7 @@
                 </div>
             </div>
             <div class="link_back">
-                <a href="main.php?page=forum">
+                <a href="popup.php?page=forum">
                     <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['topic']); ?>
                 </a>
             </div>
@@ -164,7 +164,7 @@
         if ($_REQUEST['op'] == 'delete_conf') {
             echo '
 <h3>' . gdrcd_filter('out', $MESSAGE['interface']['forums']['delete']['title']) . '</h3>
-<form action="main.php?page=forum" method="post">
+<form action="popup.php?page=forum" method="post">
   <input type="hidden" name="op" value="delete" />
   <input type="hidden" name="id_record" value="' . (int) $_REQUEST['id_record'] . '" />
   <p>' . gdrcd_filter('out', $MESSAGE['interface']['forums']['delete']['ask']) . '</p>
@@ -194,7 +194,7 @@
                     <?php echo gdrcd_filter('out', $MESSAGE['warning']['deleted']); ?>
                 </div>
                 <div class="link_back">
-                    <a href="main.php?page=<?php echo $back; ?>">
+                    <a href="popup.php?page=<?php echo $back; ?>">
                         <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['topic']); ?>
                     </a>
                 </div>
@@ -211,7 +211,7 @@
             $row = gdrcd_query("SELECT * FROM messaggioaraldo WHERE id_messaggio=" . gdrcd_filter('num', $_REQUEST['what']) . "");
             echo '
 <h3>' . gdrcd_filter('out', 'Segnala la Discussione') . '</h3>
-<form action="main.php?page=forum" method="post">
+<form action="popup.php?page=forum" method="post">
   <input type="text" list="personaggi" name="interessato" placeholder="Nome del personaggio" />
   <input type="hidden" name="what" value="' . $row["id_messaggio"] . '" />
   <input type="hidden" name="where" value="' . $row["id_araldo"] . '" />
@@ -224,9 +224,9 @@
 
 
         if ($_REQUEST['op'] == 'segnalaok') {
-            $segnalazione = gdrcd_filter_in($_SESSION['login'] ." ti ha segnalato  [url=main.php?page=forum&op=read&what=" . gdrcd_filter('num', $_REQUEST['what']) . "&where=" . gdrcd_filter('num', $_REQUEST['where']) . "] [color=black]Questo Thread [/color] [/url] <br /> Dagli uno sguardo!");
+            $segnalazione = gdrcd_filter_in($_SESSION['login'] . " ti ha segnalato  [url=javascript:modalWindow('bacheca', 'Bacheca di Gioco', 'popup.php?page=forum&op=read&what=" . gdrcd_filter('num', $_REQUEST['what']) . "&where=" . gdrcd_filter('num', $_REQUEST['where']) . "', '850','850')] [color=black]Questo Thread [/color] [/url] <br /> Dagli uno sguardo!");
             gdrcd_query('INSERT INTO messaggi (mittente, destinatario, spedito, testo) VALUES ("' . $_SESSION['login'] . '","' . gdrcd_capital_letter(gdrcd_filter('in', $_POST['interessato'])) . '", NOW(),"' . $segnalazione . '" )');
-            echo '<div class="warning"><a href="main.php?page=forum">'.gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['back']).'</a> </div>';
+            echo '<div class="warning"><a href="popup.php?page=forum">' . gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['back']) . '</a> </div>';
         }
 
 
@@ -279,7 +279,7 @@
                 ?>
                 <div class="panels_box">
                     <div class="form_gioco">
-                        <form action="main.php?page=forum" method="post">
+                        <form action="popup.php?page=forum" method="post">
                             <?php if ($padre == -1) { /* Se e' il primo post di un topic serve il titolo */ ?>
                                 <div class="form_label">
                                     <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['insert']['title']); ?>
@@ -321,7 +321,7 @@
                     </div>
                 </div>
                 <div class="link_back">
-                    <a href="main.php?page=forum">
+                    <a href="popup.php?page=forum">
                         <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['topic']); ?>
                     </a>
                 </div>
@@ -369,7 +369,7 @@
                         <tr>
                             <td class="forum_main_post_author">
                                 <div class="forum_post_author">
-                                    <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('out', $row['autore']); ?>">
+                                    <a href="javascript:modalWindow('scheda','Scheda di <?php echo gdrcd_filter('out', $row['autore']); ?>', 'popup.php?page=scheda&pg=<?php echo gdrcd_filter('out', $row['autore']); ?>' , '650','850')">
                                         <?php echo gdrcd_filter('out', $row['autore']); ?>
                                     </a>
                                     <div class="forum_avatar">
@@ -398,18 +398,18 @@
                                     if ($chiuso == 0 || $_SESSION['permessi'] >= MODERATOR) {
                                         ?>
 
-                                        <a href="main.php?page=forum&op=composer&what=<?php echo gdrcd_filter('num', $_REQUEST['what']); ?>&where=<?php echo gdrcd_filter('num', $_REQUEST['where']); ?>&quote=<?php echo $row['id_messaggio']; ?>">[<?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['quote']); ?>]</a>
+                                        <a href="popup.php?page=forum&op=composer&what=<?php echo gdrcd_filter('num', $_REQUEST['what']); ?>&where=<?php echo gdrcd_filter('num', $_REQUEST['where']); ?>&quote=<?php echo $row['id_messaggio']; ?>">[<?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['quote']); ?>]</a>
                                         <?php
                                     }
 
                                     if (($_SESSION['login'] == $row['autore'] && $chiuso == 0) || ($_SESSION['permessi'] >= MODERATOR)) {
                                         ?>
-                                        <a href="main.php?page=forum&op=modifica&what=<?php echo $row['id_messaggio']; ?>">[<?php echo $MESSAGE['interface']['forums']['link']['edit']; ?>]</a>
-                                        <a href="main.php?page=forum&op=delete_conf&id_record=<?php echo $row['id_messaggio']; ?>&padre=<?php echo $row['id_messaggio_padre']; ?>">[<?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['delete']); ?>]</a>
+                                        <a href="popup.php?page=forum&op=modifica&what=<?php echo $row['id_messaggio']; ?>">[<?php echo $MESSAGE['interface']['forums']['link']['edit']; ?>]</a>
+                                        <a href="popup.php?page=forum&op=delete_conf&id_record=<?php echo $row['id_messaggio']; ?>&padre=<?php echo $row['id_messaggio_padre']; ?>">[<?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['delete']); ?>]</a>
                                         <?php
                                     }
                                     ?>
-                                    [<a href="main.php?page=forum&op=segnala&what=<?php echo $row['id_messaggio'];?>&where=<?php echo $row['id_araldo'];?>"><span class="bottone"> Segnala </span></a>]
+                                    [<a href="popup.php?page=forum&op=segnala&what=<?php echo $row['id_messaggio']; ?>&where=<?php echo $row['id_araldo']; ?>"><span class="bottone"> Segnala </span></a>]
                                 </div>
                             </td>
                         </tr>
@@ -419,7 +419,7 @@
                             <tr>
                                 <td class="forum_other_post_author">
                                     <div class="forum_post_author">
-                                        <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('out', $row['autore']); ?>">
+                                        <a href="javascript:modalWindow('scheda','Scheda di <?php echo gdrcd_filter('out', $row['autore']); ?>', 'popup.php?page=scheda&pg=<?php echo gdrcd_filter('out', $row['autore']); ?>' , '650','850')">
                                             <?php echo gdrcd_filter('out', $row['autore']); ?>
                                         </a>
                                         <div class="forum_avatar">
@@ -447,13 +447,13 @@
                                         <?php
                                         if ($chiuso == 0 || $_SESSION['permessi'] >= MODERATOR) {
                                             ?>
-                                            <a href="main.php?page=forum&op=composer&what=<?php echo gdrcd_filter('num', $_REQUEST['what']); ?>&where=<?php echo gdrcd_filter('num', $_REQUEST['where']); ?>&quote=<?php echo $row['id_messaggio']; ?>">[<?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['quote']); ?>]</a>
+                                            <a href="popup.php?page=forum&op=composer&what=<?php echo gdrcd_filter('num', $_REQUEST['what']); ?>&where=<?php echo gdrcd_filter('num', $_REQUEST['where']); ?>&quote=<?php echo $row['id_messaggio']; ?>">[<?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['quote']); ?>]</a>
                                             <?php
                                         }
                                         if (($_SESSION['login'] == $row['autore'] && $row['chiuso'] == 0) || ($_SESSION['permessi'] >= MODERATOR)) {
                                             ?>
-                                            <a href="main.php?page=forum&op=modifica&what=<?php echo $row['id_messaggio']; ?>">[<?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['edit']); ?>]</a>
-                                            <a href="main.php?page=forum&op=delete_conf&id_record=<?php echo $row['id_messaggio']; ?>&padre=<?php echo $row['id_messaggio_padre']; ?>">[<?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['delete']); ?>]</a>
+                                            <a href="popup.php?page=forum&op=modifica&what=<?php echo $row['id_messaggio']; ?>">[<?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['edit']); ?>]</a>
+                                            <a href="popup.php?page=forum&op=delete_conf&id_record=<?php echo $row['id_messaggio']; ?>&padre=<?php echo $row['id_messaggio_padre']; ?>">[<?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['delete']); ?>]</a>
                                             <?php
                                         }
                                         ?>
@@ -472,8 +472,8 @@
                     $araldo = gdrcd_filter('num', $_REQUEST['where']);
                     ?>
                     <div class="panels_box">
-                        <div class="form_gioco">
-                            <form action="main.php?page=forum"
+                        <div class="form_gioco" style="text-align: center;">
+                            <form action="popup.php?page=forum"
                                   method="post">
                                 <font color="cccccc"><div class="form_label">
                                     Risposta rapida
@@ -500,6 +500,12 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="link_back">
+                            <a href="popup.php?page=forum&op=visit&what=<?php echo $araldo; ?>">
+                                <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['forum']); ?>
+                            </a>
+                        </div>
+
                     </div>
 
                     <?php
@@ -512,13 +518,13 @@
                 <?php
                 if ($chiuso == 0 || $_SESSION['permessi'] >= MODERATOR) {
                     ?>
-                    <a href="main.php?page=forum&op=composer&what=<?php echo gdrcd_filter('num', $_REQUEST['what']); ?>&where=<?php echo gdrcd_filter('num', $_REQUEST['where']); ?>">
+                    <a href="popup.php?page=forum&op=composer&what=<?php echo gdrcd_filter('num', $_REQUEST['what']); ?>&where=<?php echo gdrcd_filter('num', $_REQUEST['where']); ?>">
                         <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['new_post']); ?>
                     </a><br />
                     <?php
                 }
                 ?>
-                <a href="main.php?page=forum&op=visit&what=<?php echo $araldo; ?>">
+                <a href="popup.php?page=forum&op=visit&what=<?php echo $araldo; ?>">
                     <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['forum']); ?>
                 </a><br />
             </div>
@@ -541,7 +547,7 @@
                 <div class="elenco_record_gioco">
                     <table>
                         <?php
-                        while ($row = gdrcd_query($result, 'fetch')){
+                        while ($row = gdrcd_query($result, 'fetch')) {
                             if (($row['tipo'] <= PERTUTTI) ||
                                     (($row['tipo'] == SOLORAZZA) && ($_SESSION['id_razza'] == $row['proprietari'])) ||
                                     (($row['tipo'] == SOLOGILDA) && (strpos($_SESSION['gilda'], '*' . $row['proprietari'] . '*') != FALSE)) ||
@@ -578,7 +584,7 @@
                                         <td  class="casella_elemento"><div class="elementi_elenco">
 
 
-                                                <a href="main.php?page=forum&op=visit&what=<?php echo gdrcd_filter('out', $row['id_araldo']); ?>&name=<?php echo gdrcd_filter('out', $row['nome']); ?>">
+                                                <a href="popup.php?page=forum&op=visit&what=<?php echo gdrcd_filter('out', $row['id_araldo']); ?>&name=<?php echo gdrcd_filter('out', $row['nome']); ?>">
 
 
 
@@ -594,17 +600,16 @@
 
 
                                 <?php
-                                    }
-                                    
-                                                    }//while
+                            }
+                        }//while
 
                         gdrcd_query($result, 'free');
                         ?>
                     </table>
-                    <?php //Pulsante segna tutto come letto ?>
+                    <?php //Pulsante segna tutto come letto  ?>
                     <div class="panels_box">
                         <div class="form_gioco">
-                            <form action="main.php?page=forum"
+                            <form action="popup.php?page=forum"
                                   method="post">
                                 <div class="form_submit">
                                     <input type="hidden"
@@ -635,7 +640,7 @@
                 echo '<div class="error">' . gdrcd_filter('out', $MESSAGE['error']['not_allowed']) . '</div>';
                 ?>
                 <div class="link_back">
-                    <a href="main.php?page=forum">
+                    <a href="popup.php?page=forum">
                         <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['back']); ?>
                     </a>
                 </div>
@@ -691,7 +696,7 @@
                                     ?>
                                     <tr><!-- Topic -->
                                         <td  class="casella_elemento"><div class="elementi_elenco"><!-- Titolo -->
-                                                <a href="main.php?page=forum&op=read&what=<?php echo gdrcd_filter('out', $row['id_messaggio']); ?>&where=<?php echo gdrcd_filter('num', $_REQUEST['what']); ?>">
+                                                <a href="popup.php?page=forum&op=read&what=<?php echo gdrcd_filter('out', $row['id_messaggio']); ?>&where=<?php echo gdrcd_filter('num', $_REQUEST['what']); ?>">
                                                     <div class="forum_column">
                                                         <?php
                                                         /**                                                         * Topic importante
@@ -725,7 +730,7 @@
 
                                             </div></td>
                                         <td  class="casella_elemento"><div class="elementi_elenco"><!-- Autore -->
-                                                <a href="main.php?page=scheda&pg=<?php echo gdrcd_filter('out', $row['autore']); ?>">
+                                                <a href="javascript:modalWindow('scheda', 'Scheda di <?php echo gdrcd_filter('out', $row['autore']); ?>', 'popup.php?page=scheda&pg=<?php echo gdrcd_filter('out', $row['autore']); ?>', '650','850')">
                                                     <?php echo gdrcd_filter('out', $row['autore']); ?>
                                                 </a>
                                             </div></td>
@@ -733,10 +738,10 @@
                                             <div class="elementi_elenco"><!-- Data -->
                                                 <?php echo $postsnumber . ' ' . gdrcd_filter('out', $MESSAGE['interface']['forums']['topic']['posts']); ?>
                                                 <div class="forum_date_big"><?php
-                                                    if ($postsnumber > 0) {
-                                                        echo gdrcd_filter('out', $MESSAGE['interface']['forums']['topic']['last_post']) . ':   ' . gdrcd_format_date($lastupdate) . ' ' . gdrcd_format_time($lastupdate);
-                                                    }
-                                                    ?></div>
+                                                if ($postsnumber > 0) {
+                                                    echo gdrcd_filter('out', $MESSAGE['interface']['forums']['topic']['last_post']) . ':   ' . gdrcd_format_date($lastupdate) . ' ' . gdrcd_format_time($lastupdate);
+                                                }
+                                                ?></div>
                                             </div>
                                         </td>
                                         <?php
@@ -768,7 +773,7 @@
 
                                                     <!-- Importante -->
                                                     <div class="controllo_elenco" >
-                                                        <form action="main.php?<?php echo $_SERVER['QUERY_STRING']; ?>" method="post">
+                                                        <form action="popup.php?<?php echo $_SERVER['QUERY_STRING']; ?>" method="post">
                                                             <input type="hidden" name="id_record" value="<?php echo $row['id_messaggio'] ?>" />
                                                             <input type="hidden" name="status_imp" value="<?php echo $set_imp; ?>" />
                                                             <input type="hidden" name="ops" value="important" />
@@ -783,7 +788,7 @@
 
                                                     <!-- Topic Chiuso -->
                                                     <div class="controllo_elenco" >
-                                                        <form action="main.php?<?php echo $_SERVER['QUERY_STRING']; ?>" method="post">
+                                                        <form action="popup.php?<?php echo $_SERVER['QUERY_STRING']; ?>" method="post">
                                                             <input type="hidden" name="id_record" value="<?php echo $row['id_messaggio'] ?>" />
                                                             <input type="hidden" name="status_cls" value="<?php echo $set_cls; ?>" />
                                                             <input type="hidden" name="ops" value="close" />
@@ -805,7 +810,7 @@
 
                                                     <!-- Elimina -->
                                                     <div class="controllo_elenco" >
-                                                        <form action="main.php?page=forum" method="post">
+                                                        <form action="popup.php?page=forum" method="post">
                                                             <input type="hidden" name="id_record" value="<?php echo $row['id_messaggio'] ?>" />
                                                             <input type="hidden" name="padre" value="-1" />
                                                             <input type="hidden" name="op" value="delete" />
@@ -817,7 +822,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                    <?php } ?>
+                                        <?php } ?>
                                     </tr>
                                     <?php
                                 }//while
@@ -827,7 +832,7 @@
                             </table>
                         </div>
                     </div>
-                    <?php }//else   ?>
+                <?php }//else    ?>
                 <!-- Paginatore elenco -->
                 <div class="pager">
                     <?php
@@ -836,7 +841,7 @@
                         for ($i = 0; $i <= floor($totaleresults / $PARAMETERS['settings']['posts_per_page']); $i++) {
                             if ($i != $_REQUEST['offset']) {
                                 ?>
-                                <a href="main.php?page=forum&op=visit&what=<?php echo gdrcd_filter('num', $_REQUEST['what']) ?>&offset=<?php echo $i; ?>"><?php echo $i + 1; ?></a>
+                                <a href="popup.php?page=forum&op=visit&what=<?php echo gdrcd_filter('num', $_REQUEST['what']) ?>&offset=<?php echo $i; ?>"><?php echo $i + 1; ?></a>
                                 <?php
                             } else {
                                 echo ' ' . ($i + 1) . ' ';
@@ -848,15 +853,15 @@
 
                 <!-- link crea nuovo -->
                 <div class="link_back">
-                    <a href="main.php?page=forum&op=composer&what=-1&where=<?php echo gdrcd_filter('num', $_REQUEST['what']); ?>">
+                    <a href="popup.php?page=forum&op=composer&what=-1&where=<?php echo gdrcd_filter('num', $_REQUEST['what']); ?>">
                         <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['new_topic']); ?>
                     </a><br />
-                    <a href="main.php?page=forum">
-                <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['back']); ?>
+                    <a href="popup.php?page=forum">
+                        <?php echo gdrcd_filter('out', $MESSAGE['interface']['forums']['link']['back']); ?>
                     </a>
                 </div>
-    <?php } //else   ?>
-<?php } ?>
+            <?php } //else    ?>
+        <?php } ?>
     </div><!-- Box principale -->
 
 </div><!-- Pagina -->

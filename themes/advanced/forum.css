@@ -5,7 +5,12 @@
 
 /*Frame dei presenti*/
 
-div.pagina_forum{}
+div.pagina_forum{
+    width: 100%;
+   padding: 10px;
+   max-height: 830px;
+   overflow-y: auto;
+}
 div.pagina_forum div.panels_box{
   margin-top:10px;
   width: 90%;
@@ -23,7 +28,7 @@ color: #CDBA96;
 margin-left:-35px;
 }
 
-div.pagina_forum div.panels_box table{
+div.panels_box table{
    width: 100%;
 }
 div.pagina_forum div.panels_box tr{

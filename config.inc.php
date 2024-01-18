@@ -500,7 +500,7 @@ $PARAMETERS['menu']['refresh']['image_file'] = '';
 $PARAMETERS['menu']['refresh']['image_file_onclick'] = '';
 
 $PARAMETERS['menu']['map']['text'] = 'Mappa';
-$PARAMETERS['menu']['map']['url'] = 'main.php?page=mappaclick&map_id=' . $_SESSION['mappa'];
+$PARAMETERS['menu']['map']['url'] = 'main.php?page=mappaclick&map_id=-1'; //. $_SESSION['mappa'];
 $PARAMETERS['menu']['map']['image_file'] = '';
 $PARAMETERS['menu']['map']['image_file_onclick'] = '';
 
@@ -515,7 +515,7 @@ $PARAMETERS['menu']['presenti']['image_file'] = '';
 $PARAMETERS['menu']['presenti']['image_file_onclick'] = '';
 
 $PARAMETERS['menu']['forum']['text'] = 'Bacheca';
-$PARAMETERS['menu']['forum']['url'] = 'main.php?page=forum';
+$PARAMETERS['menu']['forum']['url'] = "javascript:modalWindow('bacheca', 'Bacheca di Gioco', 'popup.php?page=forum' , '850','850')";
 $PARAMETERS['menu']['forum']['image_file'] = '';
 $PARAMETERS['menu']['forum']['image_file_onclick'] = '';
 
